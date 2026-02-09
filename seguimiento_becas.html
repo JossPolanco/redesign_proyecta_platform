@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente Estudiantil - PROYECTA</title>
+    <link rel="stylesheet" href="/public/output.css">
+</head>
+
+<body class="bg-base-200">
+    <!-- Navbar -->
+    <header class="navbar bg-neutral text-neutral-content shadow-lg sticky top-0 z-50">
+        <div class="navbar-start">
+            <a class="btn btn-ghost normal-case text-xl font-bold">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                </svg>
+                PROYECTA
+            </a>
+        </div>
+
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1 gap-1">
+                <!-- <li><a class="btn btn-ghost btn-sm">Inicio</a></li>
+                <li><a class="btn btn-ghost btn-sm">Cuenta</a></li>
+                <li><a class="btn btn-ghost btn-sm">Registrar Vehicular</a></li>
+                <li><a class="btn btn-ghost btn-sm btn-active">Expediente</a></li>
+                <li><a class="btn btn-ghost btn-sm">Calendario</a></li> -->
+            </ul>
+        </div>
+
+        <label class="swap swap-rotate" id="theme">
+            <!-- this hidden checkbox controls the state -->
+            <input type="checkbox" class="theme-controller" value="" />
+
+              <!-- moon icon -->
+            <svg class="swap-on h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
+            </svg>
+            
+            <!-- sun icon -->
+            <svg class="swap-off h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path
+                    d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+            </svg>     
+        </label>
+        <div class="navbar-end gap-2">
+            <button class="btn btn-ghost btn-circle btn-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+            </button>
+            <button class="btn btn-ghost btn-circle btn-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+            </button>
+            <div class="dropdown dropdown-end">
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-8 rounded-full">
+                        <img src="https://ui-avatars.com/api/?name=D+P&background=3b82f6&color=fff" alt="Usuario" />
+                    </div>
+                </label>
+            </div>
+            <button class="btn btn-error btn-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="px-6 py-4 bg-base-100">
+        <div class="text-sm breadcrumbs">
+            <ul>
+                <li><a>Inicio</a></li>
+                <li>Seguimiento</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6 max-w-7xl">
+        <!-- Título -->
+        <div class="flex items-center gap-3 mb-6">
+            <button onclick="history.back()" class="btn btn-circle btn-ghost">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <h1 class="text-3xl font-bold">Solicitud de <span class="text-primary">BECA ALIMENTICIA</span></h1>
+        </div>
+
+        <!-- Tabs Container -->
+        <div class="bg-base-100 rounded-lg shadow-lg p-6 mb-6">
+            <div role="tablist" class="tabs tabs-lifted">
+                <input type="radio" name="solicitud_tabs" role="tab" class="tab" aria-label="Inicio" checked="checked" />
+                <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                    <!-- Inicio: Detalles de la Beca -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 text-xl font-semibold text-success mb-4">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Inicio: Detalles de la Beca
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Tipo de Beca</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">BECA ALIMENTICIA</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Servicio Social</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">20 Hrs</div>
+                            </div>
+                            <div class="form-control md:col-span-2">
+                                <label class="label"><span class="label-text font-semibold">Descripción</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">Un platillo diario en la CAFETERÍA UTCH</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Duración</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">1 Cuatrimestre</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Período de Aplicación</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">Ene-Abr-26</div>
+                            </div>
+                            <div class="form-control md:col-span-2">
+                                <label class="label"><span class="label-text font-semibold">Documentación Necesaria</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg text-sm">
+                                    Comprobante de Domicilio, Comprobante de Ingresos 1, Identificación Oficial(por ambos lados), 
+                                    Comprobante de Ingresos 2, Comprobante de Ingresos 3, Comprobante de Ingresos 4, 
+                                    Aviso de Privacidad UTCH
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-end mt-6">
+                        <button class="btn btn-primary" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(2)').click()">
+                            Siguiente
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <input type="radio" name="solicitud_tabs" role="tab" class="tab" aria-label="Paso 1" />
+                <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                    <!-- Paso 1: Verificación de Datos Personales -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 text-xl font-semibold text-success mb-4">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Paso 1: Verificación de Datos Personales
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="form-control md:col-span-2">
+                                <label class="label"><span class="label-text font-semibold">Nombre Completo</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">David Isai Portillo Lopez</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">CURP</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">POLD050305HCHRPVA1</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Fecha de Nacimiento</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">05 Marzo 2005</div>
+                            </div>
+                            <div class="form-control md:col-span-2">
+                                <label class="label"><span class="label-text font-semibold">Lugar de Nacimiento</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">Chihuahua, Chihuahua</div>
+                            </div>
+                            <div class="form-control md:col-span-2">
+                                <label class="label"><span class="label-text font-semibold">Domicilio</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">SEGUNDA 146 2 DE OCTUBRE 31375</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Estado Civil</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">Soltero (A)</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Correo Electrónico</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">davidisaiportillolopez@gmail.com</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Teléfono Fijo</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">6145510329</div>
+                            </div>
+                            <div class="form-control">
+                                <label class="label"><span class="label-text font-semibold">Celular</span></label>
+                                <div class="p-3 bg-base-200 rounded-lg">6144946274</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6">
+                        <button class="btn btn-ghost" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(1)').click()">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Anterior
+                        </button>
+                        <button class="btn btn-primary" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(3)').click()">
+                            Siguiente
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <input type="radio" name="solicitud_tabs" role="tab" class="tab" aria-label="Paso 2" />
+                <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                    <!-- Paso 2: Alta de Documentación Requerida -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 text-xl font-semibold text-success mb-4">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Paso 2: Alta de Documentación Requerida
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Documentos -->
+                            <div class="card bg-base-200 shadow-sm border-2 border-primary">
+                                <div class="card-body p-4">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-sm">Documento</h3>
+                                            <p class="text-xs">Comprobante de Domicilio</p>
+                                            <span class="badge badge-error badge-xs mt-1">Obligatorio</span>
+                                            <p class="text-xs text-base-content/60 mt-1">Puede actualizarse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card bg-base-200 shadow-sm border-2 border-primary">
+                                <div class="card-body p-4">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-sm">Documento</h3>
+                                            <p class="text-xs">Comprobante de Ingresos 1</p>
+                                            <span class="badge badge-error badge-xs mt-1">Obligatorio</span>
+                                            <p class="text-xs text-base-content/60 mt-1">Puede actualizarse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card bg-base-200 shadow-sm border-2 border-primary">
+                                <div class="card-body p-4">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-sm">Documento</h3>
+                                            <p class="text-xs">Identificación Oficial(por ambos lados)</p>
+                                            <span class="badge badge-error badge-xs mt-1">Obligatorio</span>
+                                            <p class="text-xs text-base-content/60 mt-1">Puede actualizarse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card bg-base-200 shadow-sm border-2 border-primary">
+                                <div class="card-body p-4">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-sm">Documento</h3>
+                                            <p class="text-xs">Comprobante de Ingresos 2</p>
+                                            <span class="badge badge-error badge-xs mt-1">Obligatorio</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card bg-base-200 shadow-sm">
+                                <div class="card-body p-4">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-10 h-10 text-base-content/40" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-sm">Documento</h3>
+                                            <p class="text-xs">Comprobante de Ingresos 3</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card bg-base-200 shadow-sm">
+                                <div class="card-body p-4">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-10 h-10 text-base-content/40" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-sm">Documento</h3>
+                                            <p class="text-xs">Comprobante de Ingresos 4</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card bg-base-200 shadow-sm border-2 border-primary">
+                                <div class="card-body p-4">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        <div class="flex-1">
+                                            <h3 class="font-semibold text-sm">Documento</h3>
+                                            <p class="text-xs">Aviso de Privacidad UTCH</p>
+                                            <span class="badge badge-error badge-xs mt-1">Obligatorio</span>
+                                            <p class="text-xs text-base-content/60 mt-1">Puede actualizarse</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning alert-outline">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                            <div>
+                                <h3 class="font-bold text-error">Los archivos deben pesar menos de 4Mb</h3>
+                                <p class="text-sm">Los comprobantes de ingresos deben subirse de la siguiente manera:</p>
+                                <ul class="text-sm list-disc list-inside pl-4">
+                                    <li><strong>Mensual:</strong> Subir 1 archivo</li>
+                                    <li><strong>Quincenal:</strong> Subir 2 archivos</li>
+                                    <li><strong>Semanal:</strong> Subir 4 archivos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6">
+                        <button class="btn btn-ghost" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(2)').click()">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Anterior
+                        </button>
+                        <button class="btn btn-primary" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(4)').click()">
+                            Siguiente
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <input type="radio" name="solicitud_tabs" role="tab" class="tab" aria-label="Paso 3" />
+                <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                    <!-- Paso 3: Estudio Socioeconómico -->
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-2 text-xl font-semibold text-success mb-4">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Paso 3: Estudio Socioeconómico
+                        </div>
+                        
+                        <!-- Perfil Socioeconómico -->
+                        <div class="bg-warning/20 rounded-lg p-4">
+                            <h3 class="font-semibold text-lg mb-3 text-warning">Perfil Socioeconómico</h3>
+                            <div class="space-y-2">
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>¿Eres alumno foráneo?</span>
+                                    <span class="font-semibold">NO</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>Se considera parte de un grupo indígena?</span>
+                                    <span class="font-semibold">NO</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>Habla algún dialecto o lengua indígena?</span>
+                                    <span class="font-semibold">NO</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>Es beneficiario(a) de otro tipo de beca para estudiar su carrera?</span>
+                                    <span class="font-semibold">NO</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>¿En que se traslada a la UTCH?</span>
+                                    <span class="font-semibold">Transporte Urbano</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Características Familiares -->
+                        <div class="bg-primary/20 rounded-lg p-4">
+                            <h3 class="font-semibold text-lg mb-3 text-primary">Características Familiares</h3>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2">Integrantes</h4>
+                                <p class="text-sm text-base-content/70 mb-2">4 registrados</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                                    <div class="card bg-base-100 shadow-sm">
+                                        <div class="card-body p-3 text-center">
+                                            <svg class="w-10 h-10 mx-auto text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                            </svg>
+                                            <p class="font-semibold text-sm">DAVID ISAI PORTILLO LOPEZ</p>
+                                            <p class="text-xs text-base-content/60">Yo</p>
+                                            <p class="text-xs text-base-content/60">20 años</p>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-base-100 shadow-sm">
+                                        <div class="card-body p-3 text-center">
+                                            <svg class="w-10 h-10 mx-auto text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                            </svg>
+                                            <p class="font-semibold text-sm">David Portillo Solis</p>
+                                            <p class="text-xs text-base-content/60">Padre</p>
+                                            <p class="text-xs text-base-content/60">47 años - Secundaria</p>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-base-100 shadow-sm">
+                                        <div class="card-body p-3 text-center">
+                                            <svg class="w-10 h-10 mx-auto text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                            </svg>
+                                            <p class="font-semibold text-sm">Lucia López Chavira</p>
+                                            <p class="text-xs text-base-content/60">Madre</p>
+                                            <p class="text-xs text-base-content/60">42 años - Secundaria</p>
+                                        </div>
+                                    </div>
+                                    <div class="card bg-base-100 shadow-sm">
+                                        <div class="card-body p-3 text-center">
+                                            <svg class="w-10 h-10 mx-auto text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                            </svg>
+                                            <p class="font-semibold text-sm">Berenice Portillo López</p>
+                                            <p class="text-xs text-base-content/60">Hermano(a)</p>
+                                            <p class="text-xs text-base-content/60">16 años - 1ro/Ing</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h4 class="font-semibold mb-2">Aportan al Ingreso</h4>
+                                <p class="text-sm text-base-content/70 mb-2">1 registrados</p>
+                                <div class="card bg-base-100 shadow-sm">
+                                    <div class="card-body p-3 flex flex-row items-center gap-3">
+                                        <svg class="w-10 h-10 text-info" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold">David Portillo Solis</p>
+                                            <p class="text-sm">Trabajador Independiente - $15,000.00</p>
+                                            <p class="text-xs text-base-content/60">Mensual</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-2">Vehículos</h4>
+                                <p class="text-sm text-base-content/70 mb-2">1 registrados</p>
+                                <div class="card bg-base-100 shadow-sm">
+                                    <div class="card-body p-3 flex flex-row items-center gap-3">
+                                        <svg class="w-10 h-10 text-info" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                                            <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold">Ford Ranger</p>
+                                            <p class="text-sm">2004</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Características de la Vivienda -->
+                        <div class="bg-primary/20 rounded-lg p-4">
+                            <h3 class="font-semibold text-lg mb-3 text-primary">Características Familiares</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>La vivienda en la que habita es:</span>
+                                    <span class="font-semibold">Propia</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>Material de la vivienda:</span>
+                                    <span class="font-semibold">Block</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>Material del piso:</span>
+                                    <span class="font-semibold">Cerámica</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>Material del techo:</span>
+                                    <span class="font-semibold">Losa y lamina</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>N° de Recamaras:</span>
+                                    <span class="font-semibold">3</span>
+                                </div>
+                                <div class="flex justify-between p-2 bg-base-100 rounded">
+                                    <span>N° de baños completos:</span>
+                                    <span class="font-semibold">1</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Ingresos y Egresos -->
+                        <div class="bg-success/20 rounded-lg p-4">
+                            <h3 class="font-semibold text-lg mb-3 text-success">Ingresos y Egresos</h3>
+                            
+                            <div class="flex justify-around mb-4 p-3 bg-base-100 rounded-lg">
+                                <div class="text-center">
+                                    <p class="text-sm text-base-content/60">Ingresos</p>
+                                    <p class="text-2xl font-bold text-success">$15,000.00</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-base-content/60">Egresos</p>
+                                    <p class="text-2xl font-bold text-error">$13,300.00</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm text-base-content/60">Gastos de Educación</p>
+                                    <p class="text-2xl font-bold text-info">$1,500.00</p>
+                                </div>
+                            </div>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">GASTOS FAMILIARES DE VIVIENDA Y SERVICIOS</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Alimentación y despensas</td>
+                                            <td>$8,000.00</td>
+                                            <td>Renta de la casa</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Servicios (agua,tel, electricidad, etc.)</td>
+                                            <td>$1,000.00</td>
+                                            <td>Transporte público</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pago de crédito de automóvil</td>
+                                            <td>$0.00</td>
+                                            <td>Gastos médicos <span class="text-xs">(IMSS)</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vestido</td>
+                                            <td>$0.00</td>
+                                            <td>Servicio Doméstico</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <table class="table table-sm mt-4">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3">GASTOS DE EDUCACIÓN DEL SOLICITANTE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Colegiatura por mes</td>
+                                            <td>$1,000.00</td>
+                                            <td>Clases particulares</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Otros gastos de educación</td>
+                                            <td>$300.00</td>
+                                            <td>Otros gastos personales</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div class="mt-3">
+                                    <p class="text-center text-sm font-semibold mb-2">GASTOS DE EDUCACIÓN DE OTROS MIEMBROS DE LA FAMILIA</p>
+                                    <p class="text-center text-base-content/60">Sin gastos registrados</p>
+                                </div>
+                                
+                                <table class="table table-sm mt-4">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">ASPECTOS DE SALUD:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>¿Cuentas con servicio médico?</td>
+                                            <td>NO</td>
+                                        </tr>
+                                        <tr>
+                                            <td>¿Tienes alguna discapacidad?</td>
+                                            <td>NO</td>
+                                        </tr>
+                                        <tr>
+                                            <td>¿Algún integrante de la familia tiene alguna discapacidad?</td>
+                                            <td>NO</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div class="mt-4">
+                                    <p class="font-semibold mb-2">OBSERVACIONES</p>
+                                    <div class="p-3 bg-base-100 rounded-lg min-h-[60px]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6">
+                        <button class="btn btn-ghost" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(3)').click()">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Anterior
+                        </button>
+                        <button class="btn btn-primary" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(5)').click()">
+                            Siguiente
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <input type="radio" name="solicitud_tabs" role="tab" class="tab" aria-label="Paso 4" />
+                <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                    <!-- Paso 4: Espera de Aprobación -->
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-2 text-xl font-semibold text-success mb-4">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            Paso 4: Espera de Aprobación
+                        </div>
+                        
+                        <div class="text-center py-8">
+                            <svg class="w-24 h-24 mx-auto text-success mb-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                            <h3 class="text-2xl font-bold mb-2">Gracias por enviar sus datos</h3>
+                            <p class="text-base-content/70 mb-6">Su solicitud está siendo revisada</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                                <div class="card bg-base-200">
+                                    <div class="card-body">
+                                        <p class="text-sm text-base-content/60">La convocatoria finaliza el día</p>
+                                        <p class="text-xl font-bold text-error">20 Enero 2026</p>
+                                    </div>
+                                </div>
+                                <div class="card bg-base-200">
+                                    <div class="card-body">
+                                        <p class="text-sm text-base-content/60">La fecha en la que se mostrarán los resultados es</p>
+                                        <p class="text-xl font-bold text-success">27 Enero 2026</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-6">
+                        <button class="btn btn-ghost" onclick="document.querySelector('input[name=solicitud_tabs]:nth-of-type(4)').click()">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Anterior
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estado de la Solicitud (Siempre Visible) -->
+        <div class="bg-base-100 rounded-lg shadow-lg p-6 mb-6">
+            <div class="flex items-center gap-2 text-xl font-semibold text-success mb-4">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                Estado de la Solicitud
+            </div>
+            
+            <div class="alert alert-success mb-4">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="font-bold">Felicidades su beca fue aprobada</span>
+            </div>
+            
+            <div class="prose max-w-none">
+                <p>Con un <strong>100%</strong> teniendo como obligatorio un Servicio Comunitario de <strong>20 horas</strong>, 
+                es obligatoria aceptar los términos de la Carta Compromiso de Servicio Comunitario antes del 
+                <strong class="text-error">09 febrero 2026</strong>, <strong class="text-error">de no hacerlo tu beca será cancelada</strong>.</p>
+                
+                <div class="alert alert-warning mt-4">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-neutral">Se leyeron y aprobaron los términos de la carta de aceptación</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Observaciones (Siempre Visible) -->
+        <div class="bg-base-100 rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+                Observaciones
+            </h3>
+            <textarea class="textarea textarea-bordered w-full h-32" placeholder="Sin observaciones" readonly>[06/02/2026 08:06 AM]: Su beca ha sido revisada, los resultados se verán reflejados en en las fechas acordadas.
+[06/02/2026 08:06 AM]: Su beca ha sido aceptada, debe leer la carta de aceptación y aprobar los términos.
+[06/02/2026 09:42 AM]: Se aceptaron los términos de la carta compromiso</textarea>
+        </div>
+    </main>
+
+    <!-- <footer class="footer footer-center p-10 bg-base-300 text-base-content mt-12">
+        <aside>
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+            </svg>
+            <p class="font-bold">
+                PROYECTA - Sistema de Gestión Estudiantil <br />
+                Universidad Tecnológica
+            </p>
+            <p>Copyright © 2026 - Todos los derechos reservados</p>
+        </aside>
+        <nav>
+            <div class="grid grid-flow-col gap-4">
+                <a class="link link-hover">Acerca de</a>
+                <a class="link link-hover">Contacto</a>
+                <a class="link link-hover">Políticas</a>
+                <a class="link link-hover">Soporte</a>
+            </div>
+        </nav>
+    </footer> -->
+
+</body>
+
+</html>
+
+<script>
+    const themeToggle = document.querySelector("#theme input.theme-controller");
+    const htmlElement = document.documentElement;
+    
+    themeToggle.addEventListener("change", function() {
+        const newTheme = this.checked ? "dark" : "light";
+        console.log("cambia")
+        htmlElement.setAttribute("data-theme", newTheme);
+    });
+</script>

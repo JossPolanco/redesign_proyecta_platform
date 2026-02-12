@@ -88,14 +88,335 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-6 max-w-7xl">
-        <div role="tablist" class="tabs tabs-boxed">
+        <div role="tablist" class="tabs tabs-boxed mb-6">
             <input type="radio" name="my_tabs_6" role="tab" class="tab" aria-label="Convocatorias" checked="checked" />
             <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="card bg-base-100 shadow-sm">
-                        <div class="card-body gap-4 justify-center text-center">
-                            <h2 class="card-title justify-center">BECA ACADEMICA 
-                                <div class="badge badge-info badge-soft">
+                
+                <!-- Sección de Filtros -->
+                <div class="card bg-base-200 shadow-sm mb-6">
+                    <div class="card-body">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                            </svg>
+                            Filtros de Búsqueda
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Filtro por Tipo de Beca -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Tipo de Beca</span>
+                                </label>
+                                <select id="filterType" class="select select-bordered w-full">
+                                    <option value="">Todas las becas</option>
+                                    <option value="ACADÉMICA">Beca Académica</option>
+                                    <option value="ALIMENTICIA">Beca Alimenticia</option>
+                                    <option value="DEPORTIVA">Beca Deportiva</option>
+                                    <option value="CULTURAL">Beca Cultural</option>
+                                    <option value="EXCELENCIA">Beca de Excelencia</option>
+                                    <option value="INVESTIGACIÓN">Beca de Investigación</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Filtro por Estatus -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Estatus</span>
+                                </label>
+                                <select id="filterStatus" class="select select-bordered w-full">
+                                    <option value="">Todos los estatus</option>
+                                    <option value="Sin revisar">Sin revisar</option>
+                                    <option value="Aceptado">Aceptado</option>
+                                    <option value="Cerrada">Cerrada</option>
+                                    <option value="En revisión">En revisión</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Búsqueda por texto -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Búsqueda</span>
+                                </label>
+                                <input type="text" id="searchText" placeholder="Buscar becas..." class="input input-bordered w-full" />
+                            </div>
+                        </div>
+                        
+                        <!-- Botones de acción -->
+                        <div class="flex gap-2 mt-4">
+                            <button id="clearFilters" class="btn btn-outline btn-sm">
+                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                                Limpiar Filtros
+                            </button>
+                            <div class="ml-auto">
+                                <span id="resultsCount" class="text-sm text-base-content/70"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid de Becas -->
+                <div id="becasContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Beca Académica 1 -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="ACADÉMICA" data-status="Sin revisar">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA ACADÉMICA</h2>
+                                <div class="badge badge-info badge-soft gap-1">
+                                    Sin revisar
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-1"></div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium">Periodo:</span>
+                                </div>
+                                <p class="text-xs ml-6">10 Diciembre 2025 - 20 Enero 2026</p>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Horas:</span> 20 horas
+                                </div>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Límite:</span>
+                                </div>
+                                <p class="text-xs ml-6">27 Marzo 2026</p>
+                            </div>
+                            
+                            <div class="card-actions justify-end mt-2 gap-2">
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Ver Convocatoria
+                                </button>
+                                <button class="btn btn-success btn-sm btn-outline">Seguimiento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beca Académica 2 -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="ACADÉMICA" data-status="Cerrada">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA ACADÉMICA</h2>
+                                <div class="badge badge-error badge-soft gap-1">
+                                    Cerrada
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-1"></div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium">Periodo:</span>
+                                </div>
+                                <p class="text-xs ml-6">01 Septiembre 2025 - 15 Diciembre 2025</p>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Horas:</span> 20 horas
+                                </div>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Límite:</span>
+                                </div>
+                                <p class="text-xs ml-6">20 Enero 2026</p>
+                            </div>
+                            
+                            <div class="card-actions justify-end mt-2 gap-2">
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Ver Convocatoria
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beca Alimenticia -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="ALIMENTICIA" data-status="Aceptado">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA ALIMENTICIA</h2>
+                                <div class="badge badge-success gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Aceptado
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-1"></div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium">Periodo:</span>
+                                </div>
+                                <p class="text-xs ml-6">08 Enero 2026 - 20 Abril 2026</p>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Horas:</span> 20 horas
+                                </div>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Límite:</span>
+                                </div>
+                                <p class="text-xs ml-6">27 Marzo 2026</p>
+                            </div>
+                            
+                            <div class="card-actions justify-end mt-2 gap-2">
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Ver Convocatoria
+                                </button>
+                                <button class="btn btn-success btn-sm btn-outline">Seguimiento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beca Deportiva -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="DEPORTIVA" data-status="Sin revisar">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA DEPORTIVA</h2>
+                                <div class="badge badge-info badge-soft gap-1">
+                                    Sin revisar
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-1"></div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium">Periodo:</span>
+                                </div>
+                                <p class="text-xs ml-6">15 Enero 2026 - 30 Mayo 2026</p>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Horas:</span> 15 horas
+                                </div>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Límite:</span>
+                                </div>
+                                <p class="text-xs ml-6">10 Junio 2026</p>
+                            </div>
+                            
+                            <div class="card-actions justify-end mt-2 gap-2">
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Ver Convocatoria
+                                </button>
+                                <button class="btn btn-success btn-sm btn-outline">Seguimiento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beca Cultural -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="CULTURAL" data-status="En revisión">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA CULTURAL</h2>
+                                <div class="badge badge-warning badge-soft gap-1">
+                                    En revisión
+                                </div>
+                            </div>
+                            
+                            <div class="divider my-1"></div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium">Periodo:</span>
+                                </div>
+                                <p class="text-xs ml-6">20 Enero 2026 - 20 Mayo 2026</p>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Horas:</span> 18 horas
+                                </div>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Límite:</span>
+                                </div>
+                                <p class="text-xs ml-6">31 Mayo 2026</p>
+                            </div>
+                            
+                            <div class="card-actions justify-end mt-2 gap-2">
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Ver Convocatoria
+                                </button>
+                                <button class="btn btn-success btn-sm btn-outline">Seguimiento</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Beca de Excelencia -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="EXCELENCIA" data-status="Sin revisar">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA DE EXCELENCIA</h2>
+                                <div class="badge badge-info badge-soft gap-1">
                                     Sin revisar
                                 </div>
                             </h2>
@@ -115,42 +436,80 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card bg-base-100 shadow-sm">
-                        <div class="card-body gap-4 justify-center text-center">
-                            <h2 class="card-title justify-center">BECA ACADEMICA
-                                <div class="badge badge-error badge-soft">
+
+                    <!-- Beca de Investigación -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="INVESTIGACIÓN" data-status="Cerrada">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA DE INVESTIGACIÓN</h2>
+                                <div class="badge badge-error badge-soft gap-1">
                                     Cerrada
                                 </div>
-                            </h2>
-                            <div class="badge badge-soft badge-info badge-sm mx-auto">
-                                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></circle><path d="m12,17v-5.5c0-.276-.224-.5-.5-.5h-1.5" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path><circle cx="12" cy="7.25" r="1.25" fill="currentColor" stroke-width="2"></circle></g></svg>
-                                10 Diciembre 2026 - 20 Enero 2026
                             </div>
-                            <p>
-                                Horas de Servicio: 20 horas
-                            </p>
-                            <p>
-                                Límite para Liberar: 27 Marzo 2026
-                            </p>
-                            <div class="card-actions justify-center">
-                                <button class="btn btn-soft btn-info">Convocatoria</button>
+                            
+                            <div class="divider my-1"></div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium">Periodo:</span>
+                                </div>
+                                <p class="text-xs ml-6">05 Noviembre 2025 - 15 Diciembre 2025</p>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Horas:</span> 30 horas
+                                </div>
+                                
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span class="font-medium">Límite:</span>
+                                </div>
+                                <p class="text-xs ml-6">31 Diciembre 2025</p>
+                            </div>
+                            
+                            <div class="card-actions justify-end mt-2 gap-2">
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                    Ver Convocatoria
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div class="card bg-base-100 shadow-sm">
-                        <div class="card-body gap-4 justify-center text-center">
-                            <h2 class="card-title justify-center">BECA ALIMENTICIA 
-                                <div class="badge badge-success">
-                                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></circle><polyline points="7 13 10 16 17 8" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></polyline></g></svg>
-                                Aceptado
+
+                    <!-- Beca Académica 3 -->
+                    <div class="beca-card card bg-base-100 shadow-md hover:shadow-xl transition-all duration-300 border border-base-300" 
+                         data-type="ACADÉMICA" data-status="Aceptado">
+                        <div class="card-body gap-3">
+                            <div class="flex items-start justify-between">
+                                <h2 class="card-title text-base">BECA ACADÉMICA</h2>
+                                <div class="badge badge-success gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Aceptado
                                 </div>
-                            </h2>
-                            <div class="badge badge-soft badge-info badge-sm mx-auto">
-                                <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></circle><path d="m12,17v-5.5c0-.276-.224-.5-.5-.5h-1.5" fill="none" stroke="currentColor" stroke-linecap="square" stroke-miterlimit="10" stroke-width="2"></path><circle cx="12" cy="7.25" r="1.25" fill="currentColor" stroke-width="2"></circle></g></svg>
-                                08 Enero 2026 - 20 Enero 2026
                             </div>
-                            <p>
-                                Horas de Servicio: 20 horas
+                            
+                            <div class="divider my-1"></div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/80">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span class="font-medium">Periodo:</span>
+                                </div>
+                                <p class="text-xs ml-6">05 Marzo 2026 - 05 Julio 2026</p>
                                 
                             </p>
                             <p>
@@ -163,113 +522,341 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Mensaje de no resultados -->
+                <div id="noResults" class="hidden text-center py-12">
+                    <svg class="w-16 h-16 mx-auto text-base-content/30 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p class="text-lg text-base-content/70">No se encontraron becas con los filtros seleccionados</p>
+                    <button onclick="document.getElementById('clearFilters').click()" class="btn btn-primary btn-sm mt-4">Limpiar Filtros</button>
+                </div>
             </div>
 
             <input type="radio" name="my_tabs_6" role="tab" class="tab" aria-label="Becas obtenidas" />
             <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
                 <div class="space-y-8">
                     <!-- Historial de Becas -->
-                    <div class="overflow-x-auto">
-                        <div class="bg-neutral text-neutral-content px-6 py-4 rounded-t-lg">
-                            <h3 class="text-lg font-semibold">Historial de Becas</h3>
+                    <div class="card bg-base-100 shadow-md border border-base-300">
+                        <div class="bg-gradient-to-r from-neutral to-neutral/80 text-neutral-content px-6 py-4 rounded-t-box">
+                            <h3 class="text-lg font-semibold flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Historial de Becas Solicitadas
+                            </h3>
+                            <p class="text-sm opacity-90 mt-1">Registro de todas las solicitudes de becas realizadas</p>
                         </div>
-                        <table class="table table-zebra w-full">
-                            <thead>
-                                <tr class="bg-base-300">
-                                    <th>Beca</th>
-                                    <th>Cantidad</th>
-                                    <th>Fecha de Solicitud</th>
-                                    <th>Fecha de Autorización</th>
-                                    <th>Fecha de Término</th>
-                                    <th>Autorizó</th>
-                                    <th>Notas</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Aquí irían los datos dinámicos -->
-                                <tr>
-                                    <td colspan="7" class="text-center text-base-content/50 py-8">
-                                        No hay registros disponibles
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="overflow-x-auto">
+                            <table class="table table-zebra w-full">
+                                <thead>
+                                    <tr class="bg-base-200">
+                                        <th class="font-semibold text-sm">Beca</th>
+                                        <th class="font-semibold text-sm">Cantidad</th>
+                                        <th class="font-semibold text-sm">Fecha de Solicitud</th>
+                                        <th class="font-semibold text-sm">Fecha de Autorización</th>
+                                        <th class="font-semibold text-sm">Fecha de Término</th>
+                                        <th class="font-semibold text-sm">Autorizó</th>
+                                        <th class="font-semibold text-sm">Notas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="7" class="text-center py-12">
+                                            <div class="flex flex-col items-center gap-3">
+                                                <svg class="w-16 h-16 text-base-content/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                                </svg>
+                                                <span class="text-base-content/50 font-medium">No hay registros disponibles</span>
+                                                <span class="text-sm text-base-content/40">Las solicitudes que realices aparecerán aquí</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <!-- Historial de Proyecta -->
-                    <div class="overflow-x-auto">
-                        <div class="bg-neutral text-neutral-content px-6 py-4 rounded-t-lg">
-                            <h3 class="text-lg font-semibold">Historial de Proyecta</h3>
+                    <div class="card bg-base-100 shadow-md border border-base-300">
+                        <div class="bg-gradient-to-r from-neutral to-neutral/80 text-neutral-content px-6 py-4 rounded-t-box">
+                            <h3 class="text-lg font-semibold flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                                </svg>
+                                Historial de Becas Proyecta
+                            </h3>
+                            <p class="text-sm opacity-90 mt-1">Becas otorgadas y su estado de cumplimiento</p>
                         </div>
-                        <table class="table table-zebra w-full">
-                            <thead>
-                                <tr class="bg-base-300">
-                                    <th>Beca</th>
-                                    <th>Porcentaje</th>
-                                    <th>Cantidad</th>
-                                    <th>Periodo</th>
-                                    <th>Servicio Social</th>
-                                    <th>Estatus</th>
-                                    <th>Autorizó</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>BECA ACADÉMICA</td>
-                                    <td><span class="badge badge-primary badge-soft">100%</span></td>
-                                    <td>$2,741.00</td>
-                                    <td>May-Ago-24</td>
-                                    <td>20 Hrs de 20 Hrs</td>
-                                    <td><span class="badge badge-success badge-outline">Liberada</span></td>
-                                    <td>LILIANA PIÑÓN VILLARREAL</td>
-                                </tr>
-                                <tr>
-                                    <td>BECA ACADÉMICA</td>
-                                    <td><span class="badge badge-info badge-soft">75%</span></td>
-                                    <td>$2,055.75</td>
-                                    <td>Sept-Dic-24</td>
-                                    <td>20 Hrs de 20 Hrs</td>
-                                    <td><span class="badge badge-success badge-outline">Liberada</span></td>
-                                    <td>CANDELARIA ARIANETH CARRILLO HOLGUIN</td>
-                                </tr>
-                                <tr>
-                                    <td>BECA ACADÉMICA</td>
-                                    <td><span class="badge badge-info badge-soft">75%</span></td>
-                                    <td>$2,055.75</td>
-                                    <td>Ene-Abr-25</td>
-                                    <td>20 Hrs de 20 Hrs</td>
-                                    <td><span class="badge badge-success badge-outline">Liberada</span></td>
-                                    <td>CANDELARIA ARIANETH CARRILLO HOLGUIN</td>
-                                </tr>
-                                <tr>
-                                    <td>BECA ACADÉMICA</td>
-                                    <td><span class="badge badge-primary badge-soft">100%</span></td>
-                                    <td>$2,856.00</td>
-                                    <td>May-Ago-25</td>
-                                    <td>20 Hrs de 20 Hrs</td>
-                                    <td><span class="badge badge-success badge-outline">Liberada</span></td>
-                                    <td>LILIANA PIÑÓN VILLARREAL</td>
-                                </tr>
-                                <tr>
-                                    <td>BECA ACADÉMICA</td>
-                                    <td><span class="badge badge-primary badge-soft">100%</span></td>
-                                    <td>$2,856.00</td>
-                                    <td>Sept-Dic-25</td>
-                                    <td>20 Hrs de 20 Hrs</td>
-                                    <td><span class="badge badge-success badge-outline">Liberada</span></td>
-                                    <td>CANDELARIA ARIANETH CARRILLO HOLGUIN</td>
-                                </tr>
-                                <tr>
-                                    <td>BECA ALIMENTICIA</td>
-                                    <td><span class="badge badge-primary badge-soft">100%</span></td>
-                                    <td>$0.00</td>
-                                    <td>Ene-Abr-26</td>
-                                    <td>0 Hrs de 20 Hrs</td>
-                                    <td><span class="badge badge-warning badge-outline">Activa</span></td>
-                                    <td>Bolvina González Gardea</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="overflow-x-auto">
+                            <table class="table table-zebra w-full">
+                                <thead>
+                                    <tr class="bg-base-200">
+                                        <th class="font-semibold text-sm">Beca</th>
+                                        <th class="font-semibold text-sm">Porcentaje</th>
+                                        <th class="font-semibold text-sm">Cantidad</th>
+                                        <th class="font-semibold text-sm">Periodo</th>
+                                        <th class="font-semibold text-sm">Servicio Social</th>
+                                        <th class="font-semibold text-sm">Estatus</th>
+                                        <th class="font-semibold text-sm">Autorizó</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-base-200/50 transition-colors">
+                                        <td class="font-medium">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                </svg>
+                                                BECA ACADÉMICA
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <div class="radial-progress text-primary" style="--value:100; --size:2rem; --thickness: 3px;" role="progressbar">
+                                                    <span class="text-[9px] font-bold">100%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="font-semibold text-success">$2,741.00</td>
+                                        <td>
+                                            <div class="badge badge-ghost badge-sm">May-Ago-24</div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <progress class="progress progress-success w-20" value="20" max="20"></progress>
+                                                <span class="text-xs">20/20 Hrs</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success gap-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                Liberada
+                                            </span>
+                                        </td>
+                                        <td class="text-sm">LILIANA PIÑÓN VILLARREAL</td>
+                                    </tr>
+                                    <tr class="hover:bg-base-200/50 transition-colors">
+                                        <td class="font-medium">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-info" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                </svg>
+                                                BECA ACADÉMICA
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <div class="radial-progress text-info" style="--value:75; --size:2rem; --thickness: 3px;" role="progressbar">
+                                                    <span class="text-[9px] font-bold">75%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="font-semibold text-success">$2,055.75</td>
+                                        <td>
+                                            <div class="badge badge-ghost badge-sm">Sept-Dic-24</div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <progress class="progress progress-success w-20" value="20" max="20"></progress>
+                                                <span class="text-xs">20/20 Hrs</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success gap-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                Liberada
+                                            </span>
+                                        </td>
+                                        <td class="text-sm">CANDELARIA ARIANETH CARRILLO HOLGUIN</td>
+                                    </tr>
+                                    <tr class="hover:bg-base-200/50 transition-colors">
+                                        <td class="font-medium">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-info" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                </svg>
+                                                BECA ACADÉMICA
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <div class="radial-progress text-info" style="--value:75; --size:2rem; --thickness: 3px;" role="progressbar">
+                                                    <span class="text-[9px] font-bold">75%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="font-semibold text-success">$2,055.75</td>
+                                        <td>
+                                            <div class="badge badge-ghost badge-sm">Ene-Abr-25</div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <progress class="progress progress-success w-20" value="20" max="20"></progress>
+                                                <span class="text-xs">20/20 Hrs</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success gap-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                Liberada
+                                            </span>
+                                        </td>
+                                        <td class="text-sm">CANDELARIA ARIANETH CARRILLO HOLGUIN</td>
+                                    </tr>
+                                    <tr class="hover:bg-base-200/50 transition-colors">
+                                        <td class="font-medium">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                </svg>
+                                                BECA ACADÉMICA
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <div class="radial-progress text-primary" style="--value:100; --size:2rem; --thickness: 3px;" role="progressbar">
+                                                    <span class="text-[9px] font-bold">100%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="font-semibold text-success">$2,856.00</td>
+                                        <td>
+                                            <div class="badge badge-ghost badge-sm">May-Ago-25</div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <progress class="progress progress-success w-20" value="20" max="20"></progress>
+                                                <span class="text-xs">20/20 Hrs</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success gap-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                Liberada
+                                            </span>
+                                        </td>
+                                        <td class="text-sm">LILIANA PIÑÓN VILLARREAL</td>
+                                    </tr>
+                                    <tr class="hover:bg-base-200/50 transition-colors">
+                                        <td class="font-medium">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                </svg>
+                                                BECA ACADÉMICA
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <div class="radial-progress text-primary" style="--value:100; --size:2rem; --thickness: 3px;" role="progressbar">
+                                                    <span class="text-[9px] font-bold">100%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="font-semibold text-success">$2,856.00</td>
+                                        <td>
+                                            <div class="badge badge-ghost badge-sm">Sept-Dic-25</div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <progress class="progress progress-success w-20" value="20" max="20"></progress>
+                                                <span class="text-xs">20/20 Hrs</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-success gap-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                Liberada
+                                            </span>
+                                        </td>
+                                        <td class="text-sm">CANDELARIA ARIANETH CARRILLO HOLGUIN</td>
+                                    </tr>
+                                    <tr class="hover:bg-base-200/50 transition-colors">
+                                        <td class="font-medium">
+                                            <div class="flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                BECA ALIMENTICIA
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <div class="radial-progress text-primary" style="--value:100; --size:2rem; --thickness: 3px;" role="progressbar">
+                                                    <span class="text-[9px] font-bold">100%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="font-semibold">$0.00</td>
+                                        <td>
+                                            <div class="badge badge-ghost badge-sm">Ene-Abr-26</div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center gap-2">
+                                                <progress class="progress progress-warning w-20" value="0" max="20"></progress>
+                                                <span class="text-xs">0/20 Hrs</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-warning gap-1">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                                Activa
+                                            </span>
+                                        </td>
+                                        <td class="text-sm">Bolvina González Gardea</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Estadísticas resumidas -->
+                        <div class="bg-base-200 px-6 py-4 rounded-b-box border-t border-base-300">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="stat bg-base-100 rounded-box p-4">
+                                    <div class="stat-figure text-success">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div class="stat-title text-xs">Total de Becas</div>
+                                    <div class="stat-value text-2xl text-success">6</div>
+                                    <div class="stat-desc text-xs">Historial completo</div>
+                                </div>
+                                <div class="stat bg-base-100 rounded-box p-4">
+                                    <div class="stat-figure text-info">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div class="stat-title text-xs">Monto Total</div>
+                                    <div class="stat-value text-2xl text-info">$12,565</div>
+                                    <div class="stat-desc text-xs">Recibido en becas</div>
+                                </div>
+                                <div class="stat bg-base-100 rounded-box p-4">
+                                    <div class="stat-figure text-warning">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                    <div class="stat-title text-xs">Becas Activas</div>
+                                    <div class="stat-value text-2xl text-warning">1</div>
+                                    <div class="stat-desc text-xs">En curso actual</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -468,18 +1055,140 @@
         setTimeout(function() {
             document.documentElement.classList.remove('sidebar-init');
         }, 150);
+
+        // Theme toggle functionality
+        const themeToggle = document.querySelector("#theme input.theme-controller");
+        const htmlElement = document.documentElement;
+        
+        themeToggle.addEventListener("change", function() {
+            const newTheme = this.checked ? "dark" : "light";
+            htmlElement.setAttribute("data-theme", newTheme);
+        });
+
+        // Filtros de becas - Sistema completo de filtrado
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterType = document.getElementById('filterType');
+            const filterStatus = document.getElementById('filterStatus');
+            const searchText = document.getElementById('searchText');
+            const clearFiltersBtn = document.getElementById('clearFilters');
+            const becasContainer = document.getElementById('becasContainer');
+            const noResults = document.getElementById('noResults');
+            const resultsCount = document.getElementById('resultsCount');
+            
+            // Obtener todas las cards de becas
+            const becaCards = document.querySelectorAll('.beca-card');
+            const totalCards = becaCards.length;
+            
+            // Función principal de filtrado
+            function filterBecas() {
+                const typeValue = filterType.value.toUpperCase();
+                const statusValue = filterStatus.value;
+                const searchValue = searchText.value.toLowerCase().trim();
+                
+                let visibleCount = 0;
+                
+                becaCards.forEach(card => {
+                    const cardType = card.getAttribute('data-type');
+                    const cardStatus = card.getAttribute('data-status');
+                    const cardText = card.textContent.toLowerCase();
+                    
+                    // Aplicar todos los filtros
+                    const matchType = !typeValue || cardType === typeValue;
+                    const matchStatus = !statusValue || cardStatus === statusValue;
+                    const matchSearch = !searchValue || cardText.includes(searchValue);
+                    
+                    if (matchType && matchStatus && matchSearch) {
+                        card.style.display = 'block';
+                        // Animación de entrada suave
+                        card.style.opacity = '0';
+                        setTimeout(() => {
+                            card.style.transition = 'opacity 0.3s ease-in';
+                            card.style.opacity = '1';
+                        }, visibleCount * 50);
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Mostrar/ocultar mensaje de "no hay resultados"
+                if (visibleCount === 0) {
+                    becasContainer.style.display = 'none';
+                    noResults.classList.remove('hidden');
+                } else {
+                    becasContainer.style.display = 'grid';
+                    noResults.classList.add('hidden');
+                }
+                
+                // Actualizar contador de resultados
+                updateResultsCount(visibleCount, totalCards);
+            }
+            
+            // Función para actualizar el contador de resultados
+            function updateResultsCount(visible, total) {
+                if (visible === total) {
+                    resultsCount.textContent = `Mostrando todas las becas (${total})`;
+                } else {
+                    resultsCount.textContent = `Mostrando ${visible} de ${total} becas`;
+                }
+            }
+            
+            // Función para limpiar todos los filtros
+            function clearFilters() {
+                filterType.value = '';
+                filterStatus.value = '';
+                searchText.value = '';
+                filterBecas();
+                
+                // Feedback visual de limpieza
+                clearFiltersBtn.classList.add('btn-success');
+                setTimeout(() => {
+                    clearFiltersBtn.classList.remove('btn-success');
+                }, 1000);
+            }
+            
+            // Event listeners para los filtros
+            filterType.addEventListener('change', filterBecas);
+            filterStatus.addEventListener('change', filterBecas);
+            searchText.addEventListener('input', filterBecas);
+            clearFiltersBtn.addEventListener('click', clearFilters);
+            
+            // Búsqueda en tiempo real con debounce
+            let searchTimeout;
+            searchText.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(filterBecas, 300);
+            });
+            
+            // Atajos de teclado
+            document.addEventListener('keydown', function(e) {
+                // Ctrl/Cmd + K para enfocar la búsqueda
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    searchText.focus();
+                }
+                
+                // Escape para limpiar filtros
+                if (e.key === 'Escape') {
+                    clearFilters();
+                }
+            });
+            
+            // Inicializar contador
+            updateResultsCount(totalCards, totalCards);
+            
+            // Animación de entrada inicial para las cards
+            becaCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
     </script>
 </body>
 
 </html>
-
-<script>
-    const themeToggle = document.querySelector("#theme input.theme-controller");
-    const htmlElement = document.documentElement;
-    
-    themeToggle.addEventListener("change", function() {
-        const newTheme = this.checked ? "dark" : "light";
-        console.log("cambia")
-        htmlElement.setAttribute("data-theme", newTheme);
-    });
-</script>

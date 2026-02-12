@@ -88,79 +88,102 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-6 max-w-7xl space-y-6">
-        <!-- Registro de actividades -->
+        <!-- Header y Filtros -->
         <div class="card bg-base-100 shadow-xl">
             <div class="card-body">
-                <h2 class="card-title mb-6 text-2xl">
-                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
-                    </svg>
-                    Registro de actividades
-                </h2>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <!-- Formulario de registro -->
-                    <div class="space-y-4">
-                        <div class="alert alert-info alert-outline">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-3xl font-bold flex items-center gap-3">
+                            <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
                             </svg>
-                            <span>Selecciona alguna actividad en la que te gustaría participar.</span>
-                        </div>
-
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text font-semibold">Tipo de Actividad</span>
-                            </label>
-                            <select id="tipoActividad" class="select select-bordered w-full">
-                                <option value="">Selecciona un tipo</option>
-                                <option value="Actividades Deportivas">Actividades Deportivas</option>
-                                <option value="Actividades Culturales">Actividades Culturales</option>
-                                <option value="Actividades Cívicas">Actividades Cívicas</option>
-                            </select>
-                        </div>
-
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text font-semibold">Actividad Específica</span>
-                            </label>
-                            <select id="actividadEspecifica" class="select select-bordered w-full" disabled>
-                                <option value="">Primero selecciona un tipo</option>
-                            </select>
-                        </div>
-
-                        <button id="btnAgregarActividad" class="btn btn-primary w-full gap-2" disabled>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                            </svg>
-                            Agregar actividad
-                        </button>
+                            Catálogo de Actividades
+                        </h2>
+                        <p class="text-base-content/60 mt-1">Explora y regístrate en las actividades disponibles</p>
                     </div>
+                    <div class="badge badge-primary badge-lg gap-2 px-4 py-4">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                        </svg>
+                        Periodo Ene-Abr-26
+                    </div>
+                </div>
 
-                    <!-- Actividades inscritas -->
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-bold text-lg">Actividades en el periodo actual</h3>
-                            <div class="badge badge-primary badge-lg">Ene-Abr-26</div>
-                        </div>
+                <!-- Filtros -->
+                <div class="flex flex-wrap gap-2 pb-4 border-b border-base-300">
+                    <button class="btn btn-sm btn-primary filtro-btn" data-tipo="all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        Todas
+                    </button>
+                    <button class="btn btn-sm btn-outline filtro-btn" data-tipo="Deportivas">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6.5 6.5l7 7m0-7l-7 7"/>
+                        </svg>
+                        Deportivas
+                    </button>
+                    <button class="btn btn-sm btn-outline filtro-btn" data-tipo="Culturales">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                        Culturales
+                    </button>
+                    <button class="btn btn-sm btn-outline filtro-btn" data-tipo="Cívicas">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                        </svg>
+                        Cívicas
+                    </button>
+                    <button class="btn btn-sm btn-outline filtro-btn" data-tipo="Académicas">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
+                            <path d="M3.5 9.289l.419.18A2.969 2.969 0 016 12v4a1 1 0 001 1h6a1 1 0 001-1v-4a2.969 2.969 0 012.081-2.532l.419-.18v2.21a8.002 8.002 0 01-16 0v-2.21z"/>
+                        </svg>
+                        Académicas
+                    </button>
+                    <button class="btn btn-sm btn-outline filtro-btn" data-tipo="Recreativas">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/>
+                        </svg>
+                        Recreativas
+                    </button>
+                </div>
 
-                        <div id="actividadesInscritas" class="space-y-3 min-h-50 max-h-62.5 overflow-y-auto pr-2">
-                            <!-- Las actividades se agregarán aquí dinámicamente -->
-                            <div class="text-center text-base-content/50 py-12">
-                                <svg class="w-16 h-16 mx-auto mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
-                                </svg>
-                                <p>No hay actividades registradas</p>
-                            </div>
-                        </div>
+                <!-- Grid de actividades -->
+                <div id="actividadesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                    <!-- Las cards se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </div>
 
-                        <button id="btnDescargarCarnet" class="btn btn-warning btn-outline w-full gap-2" disabled>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                            </svg>
-                            Descargar Carnet
-                        </button>
+        <!-- Mis Actividades Inscritas -->
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-2xl font-bold flex items-center gap-2">
+                        <svg class="w-7 h-7 text-success" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                        </svg>
+                        Mis Actividades Inscritas
+                    </h3>
+                    <button id="btnDescargarCarnet" class="btn btn-warning gap-2" disabled>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Descargar Carnet
+                    </button>
+                </div>
+
+                <div id="actividadesInscritas" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Las actividades inscritas se mostrarán aquí -->
+                    <div class="col-span-full text-center text-base-content/50 py-12 border-2 border-dashed border-base-300 rounded-lg">
+                        <svg class="w-20 h-20 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                        <p class="text-lg font-semibold">No hay actividades inscritas</p>
+                        <p class="text-sm">Explora el catálogo y apúntate a las actividades que te interesen</p>
                     </div>
                 </div>
             </div>
@@ -258,11 +281,32 @@
         <!-- Los toasts se agregarán aquí dinámicamente -->
     </div>
 
+    <!-- Modal de detalles de actividad -->
+    <dialog id="modalDetalleActividad" class="modal">
+        <div class="modal-box max-w-xl max-h-[85vh] overflow-y-auto p-5">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            </form>
+            
+            <div id="modalContent">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+
     <!-- Modal de confirmación para eliminar -->
     <dialog id="modalEliminar" class="modal">
         <div class="modal-box">
-            <h3 class="font-bold text-lg mb-4">¿Estás seguro?</h3>
-            <p class="py-4">Esta acción eliminará el registro de la actividad. ¿Deseas continuar?</p>
+            <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                <svg class="w-6 h-6 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                ¿Estás seguro?
+            </h3>
+            <p class="py-4">Esta acción eliminará tu registro de la actividad. ¿Deseas continuar?</p>
             <div class="modal-action">
                 <form method="dialog">
                     <button class="btn btn-ghost">Cancelar</button>
@@ -450,12 +494,7 @@
         setTimeout(function() {
             document.documentElement.classList.remove('sidebar-init');
         }, 150);
-    </script>
-</body>
 
-</html>
-
-<script>
     // Theme toggle
     const themeToggle = document.querySelector("#theme input.theme-controller");
     const htmlElement = document.documentElement;
@@ -465,143 +504,446 @@
         htmlElement.setAttribute("data-theme", newTheme);
     });
 
-    // Actividades data
-    const actividadesPorTipo = {
-        "Actividades Deportivas": ["Basquetbol", "Futbol", "Voleibol", "Atletismo", "Natación"],
-        "Actividades Culturales": ["Declamación", "Danza", "Teatro", "Música", "Pintura"],
-        "Actividades Cívicas": ["Honores a la Bandera", "Servicio Comunitario", "Voluntariado", "Campaña Ambiental"]
-    };
+    // Base de datos de actividades
+    const actividadesDisponibles = [
+        {
+            id: 1,
+            nombre: "Fútbol Varonil",
+            tipo: "Deportivas",
+            descripcion: "Entrena y compite representando a nuestra institución en torneos interuniversitarios. Desarrolla habilidades técnicas, tácticas y trabajo en equipo.",
+            encargado: "Prof. Carlos Ramírez Mendoza",
+            horarios: ["Lunes y Miércoles: 16:00 - 18:00", "Viernes: 15:00 - 17:00"],
+            cupo: 25,
+            inscritos: 18,
+            imagen: "⚽"
+        },
+        {
+            id: 2,
+            nombre: "Básquetbol",
+            tipo: "Deportivas",
+            descripcion: "Participa en el equipo representativo de básquetbol. Entrenamientos intensivos y participación en liga estudiantil regional.",
+            encargado: "Prof. Ana María Torres",
+            horarios: ["Martes y Jueves: 17:00 - 19:00", "Sábados: 09:00 - 11:00"],
+            cupo: 20,
+            inscritos: 15,
+            imagen: "🏀"
+        },
+        {
+            id: 3,
+            nombre: "Coro Institucional",
+            tipo: "Culturales",
+            descripcion: "Forma parte del coro oficial de la universidad. Presentaciones en eventos académicos y ceremonias institucionales. No requiere experiencia previa.",
+            encargado: "Mtra. Patricia Herrera Domínguez",
+            horarios: ["Lunes y Miércoles: 14:00 - 16:00"],
+            cupo: 40,
+            inscritos: 32,
+            imagen: "🎵"
+        },
+        {
+            id: 4,
+            nombre: "Teatro Universitario",
+            tipo: "Culturales",
+            descripcion: "Desarrolla habilidades actorales y escénicas. Montajes de obras clásicas y contemporáneas con presentaciones cada semestre.",
+            encargado: "Mtro. Roberto García Sánchez",
+            horarios: ["Martes y Jueves: 15:00 - 18:00"],
+            cupo: 30,
+            inscritos: 22,
+            imagen: "🎭"
+        },
+        {
+            id: 5,
+            nombre: "Brigada de Primeros Auxilios",
+            tipo: "Cívicas",
+            descripcion: "Capacítate en atención de emergencias y primeros auxilios. Participa en jornadas de salud comunitaria y eventos de protección civil.",
+            encargado: "Dr. Miguel Ángel Castillo",
+            horarios: ["Miércoles: 16:00 - 19:00", "Sábados: 10:00 - 13:00"],
+            cupo: 25,
+            inscritos: 20,
+            imagen: "🚑"
+        },
+        {
+            id: 6,
+            nombre: "Reforestación Comunitaria",
+            tipo: "Cívicas",
+            descripcion: "Participa en jornadas de reforestación y cuidado ambiental. Actividades al aire libre en áreas naturales protegidas de la región.",
+            encargado: "Biól. Laura Martínez Ruiz",
+            horarios: ["Sábados: 08:00 - 13:00 (Quincenal)"],
+            cupo: 35,
+            inscritos: 28,
+            imagen: "🌳"
+        },
+        {
+            id: 7,
+            nombre: "Club de Debate",
+            tipo: "Académicas",
+            descripcion: "Desarrolla habilidades de oratoria, argumentación y pensamiento crítico. Participación en torneos nacionales de debate universitario.",
+            encargado: "Mtro. Fernando López Vega",
+            horarios: ["Martes y Jueves: 18:00 - 20:00"],
+            cupo: 20,
+            inscritos: 14,
+            imagen: "💬"
+        },
+        {
+            id: 8,
+            nombre: "Taller de Robótica",
+            tipo: "Académicas",
+            descripcion: "Aprende programación, electrónica y construcción de robots. Participación en competencias nacionales de robótica educativa.",
+            encargado: "Ing. Ricardo Pérez Moreno",
+            horarios: ["Lunes y Miércoles: 17:00 - 20:00"],
+            cupo: 18,
+            inscritos: 16,
+            imagen: "🤖"
+        },
+        {
+            id: 9,
+            nombre: "Club de Fotografía",
+            tipo: "Recreativas",
+            descripcion: "Explora el arte fotográfico, composición y edición digital. Exposiciones semestrales y salidas a locaciones especiales.",
+            encargado: "Lic. Daniela Cruz Jiménez",
+            horarios: ["Viernes: 15:00 - 18:00"],
+            cupo: 22,
+            inscritos: 19,
+            imagen: "📷"
+        },
+        {
+            id: 10,
+            nombre: "Ajedrez Estratégico",
+            tipo: "Recreativas",
+            descripcion: "Mejora tu nivel de juego y participa en torneos institucionales. Desde nivel principiante hasta avanzado.",
+            encargado: "M.N. Jorge Alberto Díaz",
+            horarios: ["Martes y Jueves: 14:00 - 16:00"],
+            cupo: 30,
+            inscritos: 12,
+            imagen: "♟️"
+        }
+    ];
 
-    // Array para almacenar las actividades registradas
+    // Variables globales
     let actividadesRegistradas = [];
-
-    // Elementos del DOM
-    const tipoSelect = document.getElementById("tipoActividad");
-    const actividadSelect = document.getElementById("actividadEspecifica");
-    const btnAgregar = document.getElementById("btnAgregarActividad");
-    const btnDescargarCarnet = document.getElementById("btnDescargarCarnet");
-    const actividadesContainer = document.getElementById("actividadesInscritas");
-    const toastContainer = document.getElementById("toastContainer");
-    const modalEliminar = document.getElementById("modalEliminar");
-    const btnConfirmarEliminar = document.getElementById("btnConfirmarEliminar");
-
+    let filtroActual = "all";
     let actividadAEliminar = null;
 
+    // Elementos del DOM
+    const actividadesGrid = document.getElementById("actividadesGrid");
+    const actividadesInscritas = document.getElementById("actividadesInscritas");
+    const btnDescargarCarnet = document.getElementById("btnDescargarCarnet");
+    const modalDetalleActividad = document.getElementById("modalDetalleActividad");
+    const modalContent = document.getElementById("modalContent");
+    const modalEliminar = document.getElementById("modalEliminar");
+    const btnConfirmarEliminar = document.getElementById("btnConfirmarEliminar");
+    const toastContainer = document.getElementById("toastContainer");
+    const filtrosBtns = document.querySelectorAll(".filtro-btn");
+
     // Event Listeners
-    tipoSelect.addEventListener("change", function() {
-        const tipo = this.value;
-        actividadSelect.innerHTML = '<option value="">Selecciona una actividad</option>';
-        
-        if (tipo) {
-            actividadSelect.disabled = false;
-            const actividades = actividadesPorTipo[tipo];
-            actividades.forEach(act => {
-                const option = document.createElement("option");
-                option.value = act;
-                option.textContent = act;
-                actividadSelect.appendChild(option);
+    filtrosBtns.forEach(btn => {
+        btn.addEventListener("click", function() {
+            filtrosBtns.forEach(b => {
+                b.classList.remove("btn-primary");
+                b.classList.add("btn-outline");
             });
-        } else {
-            actividadSelect.disabled = true;
-            actividadSelect.innerHTML = '<option value="">Primero selecciona un tipo</option>';
-            btnAgregar.disabled = true;
+            this.classList.add("btn-primary");
+            this.classList.remove("btn-outline");
+            
+            filtroActual = this.dataset.tipo;
+            renderizarActividades();
+        });
+    });
+
+    btnConfirmarEliminar.addEventListener("click", function() {
+        if (actividadAEliminar) {
+            // Encontrar la actividad y decrementar el contador de inscritos
+            const actividad = actividadesDisponibles.find(a => a.id === actividadAEliminar);
+            if (actividad && actividad.inscritos > 0) {
+                actividad.inscritos--;
+            }
+            
+            // Eliminar de la lista de registradas
+            actividadesRegistradas = actividadesRegistradas.filter(a => a.id !== actividadAEliminar);
+            
+            // Actualizar ambas vistas
+            renderizarActividadesInscritas();
+            renderizarActividades();
+            
+            mostrarToast("Actividad eliminada correctamente", "success");
+            actividadAEliminar = null;
+            modalEliminar.close();
         }
     });
 
-    actividadSelect.addEventListener("change", function() {
-        btnAgregar.disabled = !this.value;
-    });
-
-    btnAgregar.addEventListener("click", agregarActividad);
     btnDescargarCarnet.addEventListener("click", descargarCarnet);
 
-    // Funciones
-    function agregarActividad() {
-        const tipo = tipoSelect.value;
-        const actividad = actividadSelect.value;
-        
-        if (!tipo || !actividad) return;
-
-        // Verificar si ya está registrada
-        const yaRegistrada = actividadesRegistradas.find(a => 
-            a.tipo === tipo && a.actividad === actividad
-        );
-
-        if (yaRegistrada) {
-            mostrarToast("Esta actividad ya está registrada", "error");
-            return;
-        }
-
-        const nuevaActividad = {
-            id: Date.now(),
-            tipo: tipo,
-            actividad: actividad,
-            fecha: new Date().toISOString().replace('T', ' ').substring(0, 19),
-            periodo: "Ene-Abr-26"
-        };
-
-        actividadesRegistradas.push(nuevaActividad);
-        renderizarActividades();
-        mostrarToast("¡Actividad agregada correctamente!", "success");
-
-        // Resetear formulario
-        tipoSelect.value = "";
-        actividadSelect.value = "";
-        actividadSelect.disabled = true;
-        actividadSelect.innerHTML = '<option value="">Primero selecciona un tipo</option>';
-        btnAgregar.disabled = true;
-
-        // Habilitar botón de carnet si hay actividades
-        btnDescargarCarnet.disabled = false;
-    }
-
+    // Funciones principales
     function renderizarActividades() {
-        if (actividadesRegistradas.length === 0) {
-            actividadesContainer.innerHTML = `
-                <div class="text-center text-base-content/50 py-12">
+        const actividadesFiltradas = filtroActual === "all" 
+            ? actividadesDisponibles 
+            : actividadesDisponibles.filter(a => a.tipo === filtroActual);
+
+        if (actividadesFiltradas.length === 0) {
+            actividadesGrid.innerHTML = `
+                <div class="col-span-full text-center py-12">
                     <svg class="w-16 h-16 mx-auto mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                     </svg>
-                    <p>No hay actividades registradas</p>
+                    <p class="text-base-content/60">No hay actividades en esta categoría</p>
+                </div>
+            `;
+            return;
+        }
+
+        actividadesGrid.innerHTML = actividadesFiltradas.map(actividad => {
+            const estaInscrito = actividadesRegistradas.some(a => a.id === actividad.id);
+            const porcentajeOcupacion = (actividad.inscritos / actividad.cupo) * 100;
+            
+            return `
+                <div class="card bg-base-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 border-base-300 hover:border-primary/50" onclick="mostrarDetalleActividad(${actividad.id})">
+                    <div class="card-body p-5">
+                        <div class="flex items-start justify-between gap-3 mb-3">
+                            <div class="text-4xl">${actividad.imagen}</div>
+                            <div class="badge badge-${getBadgeColor(actividad.tipo)} badge-sm">${actividad.tipo}</div>
+                        </div>
+                        
+                        <h3 class="card-title text-lg mb-2">${actividad.nombre}</h3>
+                        
+                        <p class="text-sm text-base-content/70 line-clamp-2 mb-3">
+                            ${actividad.descripcion}
+                        </p>
+                        
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-base-content/60">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="truncate">${actividad.encargado}</span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-base-content/60">
+                                    ${actividad.inscritos}/${actividad.cupo} inscritos
+                                </span>
+                                <span class="font-semibold ${porcentajeOcupacion > 80 ? 'text-warning' : 'text-success'}">
+                                    ${Math.round(porcentajeOcupacion)}% ocupado
+                                </span>
+                            </div>
+                            
+                            <progress class="progress ${porcentajeOcupacion > 80 ? 'progress-warning' : 'progress-success'} h-1.5" 
+                                value="${actividad.inscritos}" max="${actividad.cupo}"></progress>
+                        </div>
+                        
+                        ${estaInscrito ? `
+                            <div class="badge badge-success badge-sm gap-1 mt-2 w-full justify-center py-3">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Ya inscrito
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function mostrarDetalleActividad(id) {
+        const actividad = actividadesDisponibles.find(a => a.id === id);
+        if (!actividad) return;
+
+        const estaInscrito = actividadesRegistradas.some(a => a.id === actividad.id);
+        const porcentajeOcupacion = (actividad.inscritos / actividad.cupo) * 100;
+
+        modalContent.innerHTML = `
+            <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                    <div class="text-5xl">${actividad.imagen}</div>
+                    <div class="flex-1">
+                        <div class="badge badge-${getBadgeColor(actividad.tipo)} badge-sm mb-1">${actividad.tipo}</div>
+                        <h3 class="text-xl font-bold mb-1">${actividad.nombre}</h3>
+                        <div class="flex items-center gap-2 text-xs text-base-content/70">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                            </svg>
+                            <span>${actividad.encargado}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider my-1"></div>
+
+                <div>
+                    <h4 class="font-bold text-sm mb-1.5 flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                        </svg>
+                        Descripción
+                    </h4>
+                    <p class="text-sm text-base-content/80 leading-snug">${actividad.descripcion}</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm mb-2 flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                        </svg>
+                        Horarios
+                    </h4>
+                    <div class="space-y-1.5">
+                        ${actividad.horarios.map(horario => `
+                            <div class="flex items-center gap-2 bg-base-300 p-2 rounded-lg">
+                                <svg class="w-3.5 h-3.5 text-success shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-xs">${horario}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-base-300 rounded-lg p-3 text-center">
+                        <div class="text-primary mb-1">
+                            <svg class="w-6 h-6 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs text-base-content/60">Inscritos</div>
+                        <div class="text-2xl font-bold text-primary">${actividad.inscritos}</div>
+                        <div class="text-xs text-base-content/50">de ${actividad.cupo} cupos</div>
+                    </div>
+                    
+                    <div class="bg-base-300 rounded-lg p-3 text-center">
+                        <div class="${porcentajeOcupacion > 80 ? 'text-warning' : 'text-success'} mb-1">
+                            <svg class="w-6 h-6 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                        <div class="text-xs text-base-content/60">Disponibles</div>
+                        <div class="text-2xl font-bold ${porcentajeOcupacion > 80 ? 'text-warning' : 'text-success'}">
+                            ${actividad.cupo - actividad.inscritos}
+                        </div>
+                        <div class="text-xs text-base-content/50">${Math.round(porcentajeOcupacion)}% ocupado</div>
+                    </div>
+                </div>
+
+                ${!estaInscrito ? `
+                    <button onclick="inscribirseEnActividad(${actividad.id})" 
+                        class="btn btn-primary btn-block gap-2" 
+                        ${actividad.inscritos >= actividad.cupo ? 'disabled' : ''}>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                        ${actividad.inscritos >= actividad.cupo ? 'Cupo Lleno' : 'Apuntarme'}
+                    </button>
+                ` : `
+                    <div class="alert alert-success py-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="text-sm font-semibold">Ya estás inscrito en esta actividad</span>
+                    </div>
+                `}
+            </div>
+        `;
+
+        modalDetalleActividad.showModal();
+    }
+
+    function inscribirseEnActividad(id) {
+        const actividad = actividadesDisponibles.find(a => a.id === id);
+        if (!actividad) return;
+
+        const yaInscrito = actividadesRegistradas.some(a => a.id === id);
+        if (yaInscrito) {
+            mostrarToast("Ya estás inscrito en esta actividad", "error");
+            return;
+        }
+
+        if (actividad.inscritos >= actividad.cupo) {
+            mostrarToast("Lo sentimos, esta actividad ha alcanzado su cupo máximo", "error");
+            return;
+        }
+
+        const nuevaInscripcion = {
+            id: actividad.id,
+            nombre: actividad.nombre,
+            tipo: actividad.tipo,
+            encargado: actividad.encargado,
+            horarios: actividad.horarios,
+            imagen: actividad.imagen,
+            fechaInscripcion: new Date().toISOString().replace('T', ' ').substring(0, 19),
+            periodo: "Ene-Abr-26"
+        };
+
+        actividadesRegistradas.push(nuevaInscripcion);
+        actividad.inscritos++;
+        
+        renderizarActividadesInscritas();
+        renderizarActividades();
+        mostrarToast("¡Te has inscrito exitosamente!", "success");
+        
+        modalDetalleActividad.close();
+    }
+
+    function renderizarActividadesInscritas() {
+        if (actividadesRegistradas.length === 0) {
+            actividadesInscritas.innerHTML = `
+                <div class="col-span-full text-center text-base-content/50 py-12 border-2 border-dashed border-base-300 rounded-lg">
+                    <svg class="w-20 h-20 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    <p class="text-lg font-semibold">No hay actividades inscritas</p>
+                    <p class="text-sm">Explora el catálogo y apúntate a las actividades que te interesen</p>
                 </div>
             `;
             btnDescargarCarnet.disabled = true;
             return;
         }
 
-        actividadesContainer.innerHTML = actividadesRegistradas.map(act => `
-            <div class="card bg-base-200 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
-                <div class="card-body p-4">
-                    <div class="flex items-start justify-between gap-4">
-                        <div class="flex-1 space-y-2">
-                            <div class="flex items-center gap-2">
-                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                </svg>
-                                <h4 class="font-bold text-lg">${act.actividad}</h4>
+        actividadesInscritas.innerHTML = actividadesRegistradas.map(act => `
+            <div class="card bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 shadow-lg">
+                <div class="card-body p-5">
+                    <div class="flex items-start gap-4">
+                        <div class="text-5xl">${act.imagen}</div>
+                        <div class="flex-1 space-y-3">
+                            <div>
+                                <div class="flex items-start justify-between gap-2 mb-2">
+                                    <h4 class="font-bold text-xl">${act.nombre}</h4>
+                                    <button onclick="confirmarEliminar(${act.id})" 
+                                        class="btn btn-error btn-xs btn-circle" 
+                                        title="Eliminar inscripción">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="badge badge-${getBadgeColor(act.tipo)} badge-sm mb-2">${act.tipo}</div>
                             </div>
-                            <div class="flex flex-wrap gap-2 text-sm">
-                                <div class="badge badge-outline">${act.tipo}</div>
-                                <div class="badge badge-ghost">
-                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            
+                            <div class="space-y-1.5 text-sm">
+                                <div class="flex items-center gap-2 text-base-content/70">
+                                    <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="truncate">${act.encargado}</span>
+                                </div>
+                                
+                                <div class="flex items-center gap-2 text-base-content/70">
+                                    <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
                                     </svg>
-                                    ${act.fecha}
+                                    <span>${act.fechaInscripcion}</span>
                                 </div>
-                                <div class="badge badge-primary">
-                                    ${act.periodo}
+
+                                <div class="flex items-center gap-2">
+                                    <div class="badge badge-primary badge-xs"></div>
+                                    <span class="text-xs font-semibold">${act.periodo}</span>
                                 </div>
                             </div>
                         </div>
-                        <button onclick="confirmarEliminar(${act.id})" class="btn btn-error btn-sm btn-circle">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
         `).join('');
+
+        btnDescargarCarnet.disabled = false;
     }
 
     function confirmarEliminar(id) {
@@ -609,21 +951,22 @@
         modalEliminar.showModal();
     }
 
-    btnConfirmarEliminar.addEventListener("click", function() {
-        if (actividadAEliminar) {
-            actividadesRegistradas = actividadesRegistradas.filter(a => a.id !== actividadAEliminar);
-            renderizarActividades();
-            mostrarToast("Registro eliminado correctamente", "success");
-            actividadAEliminar = null;
-            modalEliminar.close();
-        }
-    });
-
     function descargarCarnet() {
-        mostrarToast("Descargando carnet...", "info");
+        mostrarToast("Generando carnet de actividades...", "info");
         setTimeout(() => {
             mostrarToast("¡Carnet descargado exitosamente!", "success");
         }, 1500);
+    }
+
+    function getBadgeColor(tipo) {
+        const colores = {
+            "Deportivas": "error",
+            "Culturales": "secondary",
+            "Cívicas": "success",
+            "Académicas": "info",
+            "Recreativas": "warning"
+        };
+        return colores[tipo] || "neutral";
     }
 
     function mostrarToast(mensaje, tipo = "info") {
@@ -640,7 +983,7 @@
         };
 
         const toast = document.createElement('div');
-        toast.className = `alert ${clases[tipo]} shadow-lg mb-2`;
+        toast.className = `alert ${clases[tipo]} shadow-lg mb-2 animate-[slideIn_0.3s_ease-out]`;
         toast.innerHTML = `
             <div class="flex items-center gap-2">
                 ${iconos[tipo]}
@@ -654,19 +997,20 @@
             toast.style.opacity = '0';
             toast.style.transition = 'opacity 0.3s';
             setTimeout(() => toast.remove(), 300);
-        }, 3000);
+        }, 3500);
     }
 
-    // Agregar actividad de ejemplo (Basquetbol de las capturas)
+    // Inicializar
     window.addEventListener('load', function() {
-        actividadesRegistradas.push({
-            id: Date.now(),
-            tipo: "Actividades Deportivas",
-            actividad: "Basquetbol",
-            fecha: "2026-02-08 15:46:48",
-            periodo: "Ene-Abr-26"
-        });
         renderizarActividades();
-        btnDescargarCarnet.disabled = false;
+        renderizarActividadesInscritas();
     });
+
+    // Hacer funciones globales para onclick
+    window.mostrarDetalleActividad = mostrarDetalleActividad;
+    window.inscribirseEnActividad = inscribirseEnActividad;
+    window.confirmarEliminar = confirmarEliminar;
 </script>
+
+</body>
+</html>

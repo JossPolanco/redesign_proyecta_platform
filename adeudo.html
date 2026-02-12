@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expediente Estudiantil - PROYECTA</title>
     <link rel="stylesheet" href="/public/output.css">
+    <script>document.documentElement.classList.add('sidebar-init');</script>
+    <style>
+        .sidebar-init .group\/sidebar,
+        .sidebar-init .group\/sidebar * {
+            transition-duration: 0s !important;
+        }
+    </style>
 </head>
 
 <body class="bg-base-200">
@@ -300,7 +307,7 @@
         <div class="drawer-side z-50">
             <label for="drawer-toggle" aria-label="close sidebar" class="drawer-overlay"></label>
             <aside
-                class="group/sidebar bg-base-300 min-h-full lg:w-20 lg:hover:w-80 w-80 transition-all duration-300 ease-in-out overflow-hidden flex flex-col">
+                class="group/sidebar bg-base-300 min-h-full lg:w-16 lg:hover:w-56 w-56 transition-all duration-300 ease-in-out overflow-hidden flex flex-col">
                 <div class="flex items-center gap-3 px-4 py-5 border-b border-base-content/10">
                     <svg class="w-10 h-10 shrink-0 text-primary" fill="currentColor" viewBox="0 0 20 20">
                         <path
@@ -387,6 +394,13 @@
             </aside>
         </div>
     </div>
+
+    <script>
+        // Re-enable sidebar transitions after initial render
+        setTimeout(function() {
+            document.documentElement.classList.remove('sidebar-init');
+        }, 150);
+    </script>
 </body>
 
 </html>

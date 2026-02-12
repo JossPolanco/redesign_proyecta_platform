@@ -2484,8 +2484,8 @@
   .w-32 {
     width: calc(var(--spacing) * 32);
   }
-  .w-80 {
-    width: calc(var(--spacing) * 80);
+  .w-56 {
+    width: calc(var(--spacing) * 56);
   }
   .w-full {
     width: 100%;
@@ -3577,9 +3577,9 @@
       display: inline;
     }
   }
-  .lg\:w-20 {
+  .lg\:w-16 {
     @media (width >= 64rem) {
-      width: calc(var(--spacing) * 20);
+      width: calc(var(--spacing) * 16);
     }
   }
   .lg\:grid-cols-2 {
@@ -3597,11 +3597,11 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
-  .lg\:hover\:w-80 {
+  .lg\:hover\:w-56 {
     @media (width >= 64rem) {
       &:hover {
         @media (hover: hover) {
-          width: calc(var(--spacing) * 80);
+          width: calc(var(--spacing) * 56);
         }
       }
     }

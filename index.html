@@ -37,86 +37,101 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-6 max-w-7xl space-y-8">
-      <!-- Welcome Section -->
-      <section class="text-center">
-        <h1 class="text-4xl font-bold text-primary">Bienvenido a Proyecta</h1>
-        <p class="text-lg text-base-content/70 mt-2">Tu plataforma para gestionar tus actividades académicas y administrativas de manera sencilla.</p>
-      </section>
+    <main class="container mx-auto px-4 py-6 max-w-5xl space-y-6">
+      <!-- Welcome -->
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-bold">Bienvenido, <span class="text-primary">David Portillo</span></h1>
+          <p class="text-sm text-base-content/60">Universidad Tecnológica de Chihuahua &middot; Cuatrimestre Enero - Abril 2026</p>
+        </div>
+      </div>
 
-      <!-- Quick Links Section -->
-      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <a href="expediente.html" class="card bg-base-100 shadow-lg hover:shadow-xl transition">
-          <div class="card-body text-center">
-            <h2 class="card-title text-lg font-bold">Expediente</h2>
-            <p>Consulta y actualiza tu información personal y académica.</p>
-          </div>
-        </a>
-        <a href="horario.html" class="card bg-base-100 shadow-lg hover:shadow-xl transition">
-          <div class="card-body text-center">
-            <h2 class="card-title text-lg font-bold">Horario</h2>
-            <p>Revisa tu horario de clases y actividades.</p>
-          </div>
-        </a>
-        <a href="referenciasBancarias.html" class="card bg-base-100 shadow-lg hover:shadow-xl transition">
-          <div class="card-body text-center">
-            <h2 class="card-title text-lg font-bold">Referencias Bancarias</h2>
-            <p>Consulta tus referencias bancarias para pagos.</p>
-          </div>
-        </a>
-        <a href="seguimiento_becas.html" class="card bg-base-100 shadow-lg hover:shadow-xl transition">
-          <div class="card-body text-center">
-            <h2 class="card-title text-lg font-bold">Becas</h2>
-            <p>Da seguimiento a tus solicitudes de becas.</p>
-          </div>
-        </a>
-      </section>
+      <!-- Grid principal: 3 columnas -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-      <!-- Separador entre secciones -->
-      <div class="m-24"></div>
+        <!-- Col 1: Inscripciones + Titulación -->
+        <div class="space-y-4">
+          <a href="#" class="card bg-base-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group">
+            <div class="card-body p-5 gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+              </div>
+              <h3 class="font-semibold group-hover:text-primary transition">Procedimientos para Inscripciones</h3>
+              <p class="text-xs text-base-content/50">Guía paso a paso para tu proceso de inscripción al cuatrimestre.</p>
+              <div class="card-actions justify-end mt-1">
+                <span class="badge badge-primary badge-outline badge-sm gap-1">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                  Ver más
+                </span>
+              </div>
+            </div>
+          </a>
 
-      <!-- Announcements Section -->
-      <section class="bg-base-100 shadow-lg rounded-lg p-6">
-        <h2 class="text-2xl font-bold mb-4">Avisos y Notificaciones</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="card badge-ghost text-primary-content shadow-md">
-            <div class="card-body">
-              <h3 class="card-title">Programa Institucional de Desarrollo (PIDE) 2024 - 2028</h3>
-              <p>Consulta los detalles del programa institucional para los próximos años.</p>
+          <a href="titulacion.html" class="card bg-base-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group">
+            <div class="card-body p-5 gap-3">
+              <div class="w-10 h-10 rounded-lg bg-warning/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342"></path></svg>
+              </div>
+              <h3 class="font-semibold group-hover:text-warning transition">Titulación</h3>
+              <p class="text-xs text-base-content/50">Consulta el estatus de tu trámite y los pasos a seguir.</p>
+              <div class="card-actions justify-end mt-1">
+                <span class="badge badge-warning badge-outline badge-sm gap-1">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                  Ver más
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Col 2: Tutoriales e Información de Estadías -->
+        <a href="estadia.html" class="card bg-base-100 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group h-fit">
+          <div class="card-body p-5 gap-3">
+            <div class="w-10 h-10 rounded-lg bg-info/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-info" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </div>
+            <h3 class="font-semibold group-hover:text-info transition">Tutoriales e Información de Estadías</h3>
+            <p class="text-xs text-base-content/50">Videos, guías y documentos sobre el proceso de estadías profesionales.</p>
+            <div class="card-actions justify-end mt-1">
+              <span class="badge badge-info badge-outline badge-sm gap-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                Ver más
+              </span>
             </div>
           </div>
-          <div class="card badge-ghost text-primary-content shadow-md">
-            <div class="card-body">
-              <h3 class="card-title">Seguro de Salud para Estudiantes IMSS</h3>
-              <p>Información importante sobre el seguro de salud para estudiantes.</p>
-            </div>
-          </div>
-          <div class="card badge-ghost text-primary-content shadow-md">
-            <div class="card-body">
-              <h3 class="card-title">Catálogo de Servicio Comunitario</h3>
-              <p>Descubre las opciones disponibles para tu servicio comunitario.</p>
-            </div>
-          </div>
-          <div class="card badge-ghost text-primary-content shadow-md">
-            <div class="card-body">
-              <h3 class="card-title">Manual para Becas Internas</h3>
-              <p>Consulta el manual para conocer los requisitos y procesos.</p>
-            </div>
-          </div>
-          <div class="card badge-ghost text-primary-content shadow-md">
-            <div class="card-body">
-              <h3 class="card-title">Titulación</h3>
-              <p>Información sobre los procesos de titulación disponibles.</p>
-            </div>
-          </div>
-          <div class="card badge-ghost text-primary-content shadow-md">
-            <div class="card-body">
-              <h3 class="card-title">Tutoriales e Información de Estadías</h3>
-              <p>Accede a tutoriales y guías para tus estadías profesionales.</p>
-            </div>
+        </a>
+
+        <!-- Col 3: Recursos (botones compactos) -->
+        <div class="card bg-base-100 shadow-md h-fit">
+          <div class="card-body p-4 gap-2">
+            <h3 class="font-semibold text-sm flex items-center gap-2 mb-1">
+              <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+              Recursos
+            </h3>
+
+            <a href="#" class="btn btn-sm btn-outline btn-success justify-start gap-2 normal-case font-normal w-full">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+              <span class="text-left text-xs">Manual para Becas</span>
+            </a>
+
+            <a href="#" class="btn btn-sm btn-outline btn-info justify-start gap-2 normal-case font-normal w-full">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              <span class="text-left text-xs">Servicio Comunitario</span>
+            </a>
+
+            <a href="#" class="btn btn-sm btn-outline btn-error justify-start gap-2 normal-case font-normal w-full">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+              <span class="text-left text-xs">Seguro de Salud IMSS</span>
+            </a>
+
+            <a href="#" class="btn btn-sm btn-outline btn-primary justify-start gap-2 normal-case font-normal w-full">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+              <span class="text-left text-xs">PIDE 2024 - 2028</span>
+            </a>
           </div>
         </div>
-      </section>
+
+      </div>
     </main>
 
     <!-- Footer -->

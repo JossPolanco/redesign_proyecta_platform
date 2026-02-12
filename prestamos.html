@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Préstamos - PROYECTA</title>
+    <link rel="stylesheet" href="/public/output.css">
+</head>
+
+<body class="bg-base-200">
+    <!-- Navbar -->
+    <header class="navbar bg-neutral text-neutral-content shadow-lg sticky top-0 z-50">
+        <div class="navbar-start">
+            <a href="index.html" class="btn btn-ghost normal-case text-xl font-bold">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                </svg>
+                PROYECTA
+            </a>
+        </div>
+
+        <label class="swap swap-rotate navbar-end" id="theme">
+            <input type="checkbox" class="theme-controller" value="" />
+            <svg class="swap-on h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/>
+            </svg>
+            <svg class="swap-off h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/>
+            </svg>
+        </label>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6 max-w-7xl space-y-8">
+
+        <!-- Title Section -->
+        <section class="text-center">
+            <h1 class="text-4xl font-bold text-primary">Préstamos</h1>
+            <p class="text-lg text-base-content/70 mt-2">Solicita y consulta tus préstamos de libros y materiales.</p>
+        </section>
+
+        <!-- Tabs Section -->
+        <div class="tabs tabs-boxed justify-center gap-1" id="tabsContainer">
+            <a class="tab tab-active" data-tab="solicitar" onclick="switchTab('solicitar')">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                Solicitar Préstamo
+            </a>
+            <a class="tab" data-tab="activos" onclick="switchTab('activos')">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Préstamos Activos
+            </a>
+            <a class="tab" data-tab="historial" onclick="switchTab('historial')">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                Historial
+            </a>
+        </div>
+
+        <!-- Solicitar Préstamo Section -->
+        <section id="solicitar" class="tab-panel">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title text-primary mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        Materiales Disponibles para Préstamo
+                    </h2>
+
+                    <!-- Filtros -->
+                    <div class="flex flex-wrap gap-3 mb-4">
+                        <select class="select select-bordered select-sm w-full max-w-xs">
+                            <option disabled selected>Tipo de material</option>
+                            <option>Libro</option>
+                            <option>Laptop</option>
+                            <option>Proyector</option>
+                            <option>Equipo de laboratorio</option>
+                        </select>
+                        <input type="text" placeholder="Buscar material..." class="input input-bordered input-sm w-full max-w-xs" />
+                        <button class="btn btn-primary btn-sm gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            Buscar
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="table table-zebra w-full">
+                            <thead>
+                                <tr class="bg-primary/10">
+                                    <th>Material</th>
+                                    <th>Tipo</th>
+                                    <th>Disponibles</th>
+                                    <th>Días Máx.</th>
+                                    <th>Ubicación</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover">
+                                    <td class="font-semibold">Cálculo de una variable - James Stewart</td>
+                                    <td><span class="badge badge-info badge-outline">Libro</span></td>
+                                    <td><span class="badge badge-success">3</span></td>
+                                    <td><span class="badge badge-ghost">7 días</span></td>
+                                    <td>Biblioteca Central</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm gap-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                            Solicitar
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover">
+                                    <td class="font-semibold">Laptop HP ProBook 450</td>
+                                    <td><span class="badge badge-secondary badge-outline">Laptop</span></td>
+                                    <td><span class="badge badge-warning">1</span></td>
+                                    <td><span class="badge badge-ghost">1 día</span></td>
+                                    <td>Centro de Cómputo</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm gap-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                            Solicitar
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="hover">
+                                    <td class="font-semibold">Proyector Epson EB-X51</td>
+                                    <td><span class="badge badge-accent badge-outline">Proyector</span></td>
+                                    <td><span class="badge badge-error">0</span></td>
+                                    <td><span class="badge badge-ghost">1 día</span></td>
+                                    <td>Audiovisual</td>
+                                    <td>
+                                        <button class="btn btn-disabled btn-sm gap-1">No disponible</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover">
+                                    <td class="font-semibold">Física Universitaria - Sears & Zemansky</td>
+                                    <td><span class="badge badge-info badge-outline">Libro</span></td>
+                                    <td><span class="badge badge-success">5</span></td>
+                                    <td><span class="badge badge-ghost">7 días</span></td>
+                                    <td>Biblioteca Central</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm gap-1">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                            Solicitar
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Préstamos Activos Section -->
+        <section id="activos" class="tab-panel" style="display:none;">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title text-warning mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Préstamos Activos
+                    </h2>
+                    <div class="overflow-x-auto">
+                        <table class="table table-zebra w-full">
+                            <thead>
+                                <tr class="bg-warning/10">
+                                    <th>Material</th>
+                                    <th>Tipo</th>
+                                    <th>Fecha Préstamo</th>
+                                    <th>Fecha Devolución</th>
+                                    <th>Estatus</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover">
+                                    <td class="font-semibold">Cálculo de una variable - James Stewart</td>
+                                    <td><span class="badge badge-info badge-outline">Libro</span></td>
+                                    <td>05/02/2026</td>
+                                    <td>12/02/2026</td>
+                                    <td><span class="badge badge-warning gap-1">
+                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="5"></circle></svg>
+                                        Por vencer
+                                    </span></td>
+                                    <td>
+                                        <div class="flex gap-1">
+                                            <button class="btn btn-info btn-sm btn-outline gap-1">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                                Renovar
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover">
+                                    <td class="font-semibold">Laptop HP ProBook 450</td>
+                                    <td><span class="badge badge-secondary badge-outline">Laptop</span></td>
+                                    <td>11/02/2026</td>
+                                    <td>11/02/2026</td>
+                                    <td><span class="badge badge-success gap-1">
+                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><circle cx="10" cy="10" r="5"></circle></svg>
+                                        Vigente
+                                    </span></td>
+                                    <td>
+                                        <div class="flex gap-1">
+                                            <button class="btn btn-success btn-sm btn-outline gap-1">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                                Devolver
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-sm text-base-content/50 mt-2 text-right">
+                        Mostrando 2 de 2 registros
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historial Section -->
+        <section id="historial" class="tab-panel" style="display:none;">
+            <div class="card bg-base-100 shadow-xl">
+                <div class="card-body">
+                    <h2 class="card-title text-success mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        Historial de Préstamos
+                    </h2>
+                    <div class="overflow-x-auto">
+                        <table class="table table-zebra w-full">
+                            <thead>
+                                <tr class="bg-success/10">
+                                    <th>Material</th>
+                                    <th>Tipo</th>
+                                    <th>Fecha Préstamo</th>
+                                    <th>Fecha Devolución</th>
+                                    <th>Estatus</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="hover">
+                                    <td class="font-semibold">Programación en C++ - Deitel</td>
+                                    <td><span class="badge badge-info badge-outline">Libro</span></td>
+                                    <td>10/01/2026</td>
+                                    <td>17/01/2026</td>
+                                    <td><span class="badge badge-success gap-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        Devuelto
+                                    </span></td>
+                                </tr>
+                                <tr class="hover">
+                                    <td class="font-semibold">Proyector Epson EB-X51</td>
+                                    <td><span class="badge badge-accent badge-outline">Proyector</span></td>
+                                    <td>05/01/2026</td>
+                                    <td>05/01/2026</td>
+                                    <td><span class="badge badge-success gap-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        Devuelto
+                                    </span></td>
+                                </tr>
+                                <tr class="hover">
+                                    <td class="font-semibold">Álgebra Lineal - Grossman</td>
+                                    <td><span class="badge badge-info badge-outline">Libro</span></td>
+                                    <td>15/12/2025</td>
+                                    <td>28/12/2025</td>
+                                    <td><span class="badge badge-error gap-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path></svg>
+                                        Devuelto con retraso
+                                    </span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-sm text-base-content/50 mt-2 text-right">
+                        Mostrando 3 de 3 registros
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content mt-12">
+        <div>
+            <p class="font-bold">Proyecta - Universidad Tecnológica de Chihuahua</p>
+            <p>Copyright © 2026 - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.querySelector("#theme input.theme-controller");
+        const htmlElement = document.documentElement;
+
+        themeToggle.addEventListener("change", function () {
+            const newTheme = this.checked ? "dark" : "light";
+            htmlElement.setAttribute("data-theme", newTheme);
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-panel').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.querySelectorAll('#tabsContainer .tab').forEach(tab => {
+                tab.classList.remove('tab-active');
+            });
+            document.getElementById(tabId).style.display = 'block';
+            document.querySelector(`[data-tab="${tabId}"]`).classList.add('tab-active');
+        }
+    </script>
+</body>
+
+</html>

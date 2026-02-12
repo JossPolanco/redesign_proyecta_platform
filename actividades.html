@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente Estudiantil - PROYECTA</title>
+    <link rel="stylesheet" href="/public/output.css">
+    <script>document.documentElement.classList.add('sidebar-init');</script>
+    <style>
+        .sidebar-init .group\/sidebar,
+        .sidebar-init .group\/sidebar * {
+            transition-duration: 0s !important;
+        }
+    </style>
+</head>
+
+<body class="bg-base-200">
+    <div class="drawer lg:drawer-open">
+        <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
+
+        <!-- Main Content -->
+        <div class="drawer-content">
+            <!-- Navbar -->
+            <header class="navbar bg-neutral text-neutral-content shadow-lg sticky top-0 z-40">
+                <div class="navbar-start">
+                    <label for="drawer-toggle" class="btn btn-ghost btn-circle lg:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </label>
+                    <a class="btn btn-ghost normal-case text-xl font-bold">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                        </svg>
+                        PROYECTA
+                    </a>
+                </div>
+
+                <label class="swap swap-rotate" id="theme">
+                    <input type="checkbox" class="theme-controller" value="" />
+                    <svg class="swap-on h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
+                    </svg>
+                    <svg class="swap-off h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
+                    </svg>
+                </label>
+                <div class="navbar-end gap-2">
+                    <button class="btn btn-ghost btn-circle btn-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-ghost btn-circle btn-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </button>
+                    <div class="dropdown dropdown-end">
+                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-8 rounded-full">
+                                <img src="https://ui-avatars.com/api/?name=D+P&background=3b82f6&color=fff"
+                                    alt="Usuario" />
+                            </div>
+                        </label>
+                    </div>
+                    <button class="btn btn-error btn-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+<div class="px-6 py-4 bg-base-100">
+        <div class="text-sm breadcrumbs">
+            <ul>
+                <li><a>Inicio</a></li>
+                <li>Actividades deportivas, culturales y cívicas</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6 max-w-7xl space-y-6">
+        <!-- Registro de actividades -->
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title mb-6 text-2xl">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                        <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+                    </svg>
+                    Registro de actividades
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Formulario de registro -->
+                    <div class="space-y-4">
+                        <div class="alert alert-info alert-outline">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>Selecciona alguna actividad en la que te gustaría participar.</span>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text font-semibold">Tipo de Actividad</span>
+                            </label>
+                            <select id="tipoActividad" class="select select-bordered w-full">
+                                <option value="">Selecciona un tipo</option>
+                                <option value="Actividades Deportivas">Actividades Deportivas</option>
+                                <option value="Actividades Culturales">Actividades Culturales</option>
+                                <option value="Actividades Cívicas">Actividades Cívicas</option>
+                            </select>
+                        </div>
+
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text font-semibold">Actividad Específica</span>
+                            </label>
+                            <select id="actividadEspecifica" class="select select-bordered w-full" disabled>
+                                <option value="">Primero selecciona un tipo</option>
+                            </select>
+                        </div>
+
+                        <button id="btnAgregarActividad" class="btn btn-primary w-full gap-2" disabled>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                            </svg>
+                            Agregar actividad
+                        </button>
+                    </div>
+
+                    <!-- Actividades inscritas -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-lg">Actividades en el periodo actual</h3>
+                            <div class="badge badge-primary badge-lg">Ene-Abr-26</div>
+                        </div>
+
+                        <div id="actividadesInscritas" class="space-y-3 min-h-50 max-h-62.5 overflow-y-auto pr-2">
+                            <!-- Las actividades se agregarán aquí dinámicamente -->
+                            <div class="text-center text-base-content/50 py-12">
+                                <svg class="w-16 h-16 mx-auto mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
+                                </svg>
+                                <p>No hay actividades registradas</p>
+                            </div>
+                        </div>
+
+                        <button id="btnDescargarCarnet" class="btn btn-warning btn-outline w-full gap-2" disabled>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Descargar Carnet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eventos y asistencias liberados -->
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title mb-6 text-2xl">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                    </svg>
+                    Eventos y asistencia liberados
+                </h2>
+
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Número Evento</th>
+                                <th>Descripción</th>
+                                <th>Fecha Liberación</th>
+                                <th class="text-center">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover">
+                                <td class="text-center font-bold text-lg">1</td>
+                                <td>Evento cultural - Día de muertos</td>
+                                <td>2026-11-02 14:30:00</td>
+                                <td class="text-center">
+                                    <div class="badge badge-error badge-md gap-1">
+                                        <svg class="w-3 h-3 hidden sm:block" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                        </svg>
+                                        Sin liberar
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover">
+                                <td class="text-center font-bold text-lg">2</td>
+                                <td>Evento deportivo - Torneo de basquetbol</td>
+                                <td>-</td>
+                                <td class="text-center">
+                                    <div class="badge badge-error badge-md gap-1">
+                                        <svg class="w-3 h-3 hidden sm:block" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                        </svg>
+                                        Sin liberar
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover">
+                                <td class="text-center font-bold text-lg">3</td>
+                                <td>Evento cívico - Ceremonia de honores</td>
+                                <td>-</td>
+                                <td class="text-center">
+                                    <div class="badge badge-error badge-md gap-1">
+                                        <svg class="w-3 h-3 hidden sm:block" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                        </svg>
+                                        Sin liberar
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover">
+                                <td class="text-center font-bold text-lg">4</td>
+                                <td>Evento cultural - Festival de arte</td>
+                                <td>-</td>
+                                <td class="text-center">
+                                    <div class="badge badge-error badge-md gap-1">
+                                        <svg class="w-3 h-3 hidden sm:block" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                        </svg>
+                                        Sin liberar
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="alert alert-warning alert-outline mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                    <span>Los eventos se liberan automáticamente después de tu asistencia confirmada.</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast toast-top toast-end z-50">
+        <!-- Los toasts se agregarán aquí dinámicamente -->
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <dialog id="modalEliminar" class="modal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg mb-4">¿Estás seguro?</h3>
+            <p class="py-4">Esta acción eliminará el registro de la actividad. ¿Deseas continuar?</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn btn-ghost">Cancelar</button>
+                </form>
+                <button id="btnConfirmarEliminar" class="btn btn-error gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                    Eliminar
+                </button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="drawer-side z-50">
+            <label for="drawer-toggle" aria-label="close sidebar" class="drawer-overlay"></label>
+            <aside
+                class="group/sidebar bg-base-300 min-h-full lg:w-16 lg:hover:w-56 w-56 transition-all duration-300 ease-in-out overflow-hidden flex flex-col">
+                <div class="flex items-center gap-3 px-4 py-5 border-b border-base-content/10">
+                    <svg class="w-10 h-10 shrink-0 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                    </svg>
+                    <span
+                        class="text-xl font-bold whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:block hidden">PROYECTA</span>
+                    <span class="text-xl font-bold whitespace-nowrap lg:hidden">PROYECTA</span>
+                </div>
+                <ul class="menu gap-1 px-2 py-4 flex-1">
+                    <li>
+                        <a href="index.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Inicio</span>
+                            <span class="whitespace-nowrap lg:hidden">Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="expediente.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Expediente</span>
+                            <span class="whitespace-nowrap lg:hidden">Expediente</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="horario.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Horario</span>
+                            <span class="whitespace-nowrap lg:hidden">Horario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="estadoCuenta.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Estado de Cuenta</span>
+                            <span class="whitespace-nowrap lg:hidden">Estado de Cuenta</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="actividades.html" class="flex items-center gap-3 active">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Actividades</span>
+                            <span class="whitespace-nowrap lg:hidden">Actividades</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="estadia.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Estadía</span>
+                            <span class="whitespace-nowrap lg:hidden">Estadía</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="becas.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Becas</span>
+                            <span class="whitespace-nowrap lg:hidden">Becas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="psicologia.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Psicología</span>
+                            <span class="whitespace-nowrap lg:hidden">Psicología</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        // Re-enable sidebar transitions after initial render
+        setTimeout(function() {
+            document.documentElement.classList.remove('sidebar-init');
+        }, 150);
+    </script>
+</body>
+
+</html>
+
+<script>
+    // Theme toggle
+    const themeToggle = document.querySelector("#theme input.theme-controller");
+    const htmlElement = document.documentElement;
+    
+    themeToggle.addEventListener("change", function() {
+        const newTheme = this.checked ? "dark" : "light";
+        htmlElement.setAttribute("data-theme", newTheme);
+    });
+
+    // Actividades data
+    const actividadesPorTipo = {
+        "Actividades Deportivas": ["Basquetbol", "Futbol", "Voleibol", "Atletismo", "Natación"],
+        "Actividades Culturales": ["Declamación", "Danza", "Teatro", "Música", "Pintura"],
+        "Actividades Cívicas": ["Honores a la Bandera", "Servicio Comunitario", "Voluntariado", "Campaña Ambiental"]
+    };
+
+    // Array para almacenar las actividades registradas
+    let actividadesRegistradas = [];
+
+    // Elementos del DOM
+    const tipoSelect = document.getElementById("tipoActividad");
+    const actividadSelect = document.getElementById("actividadEspecifica");
+    const btnAgregar = document.getElementById("btnAgregarActividad");
+    const btnDescargarCarnet = document.getElementById("btnDescargarCarnet");
+    const actividadesContainer = document.getElementById("actividadesInscritas");
+    const toastContainer = document.getElementById("toastContainer");
+    const modalEliminar = document.getElementById("modalEliminar");
+    const btnConfirmarEliminar = document.getElementById("btnConfirmarEliminar");
+
+    let actividadAEliminar = null;
+
+    // Event Listeners
+    tipoSelect.addEventListener("change", function() {
+        const tipo = this.value;
+        actividadSelect.innerHTML = '<option value="">Selecciona una actividad</option>';
+        
+        if (tipo) {
+            actividadSelect.disabled = false;
+            const actividades = actividadesPorTipo[tipo];
+            actividades.forEach(act => {
+                const option = document.createElement("option");
+                option.value = act;
+                option.textContent = act;
+                actividadSelect.appendChild(option);
+            });
+        } else {
+            actividadSelect.disabled = true;
+            actividadSelect.innerHTML = '<option value="">Primero selecciona un tipo</option>';
+            btnAgregar.disabled = true;
+        }
+    });
+
+    actividadSelect.addEventListener("change", function() {
+        btnAgregar.disabled = !this.value;
+    });
+
+    btnAgregar.addEventListener("click", agregarActividad);
+    btnDescargarCarnet.addEventListener("click", descargarCarnet);
+
+    // Funciones
+    function agregarActividad() {
+        const tipo = tipoSelect.value;
+        const actividad = actividadSelect.value;
+        
+        if (!tipo || !actividad) return;
+
+        // Verificar si ya está registrada
+        const yaRegistrada = actividadesRegistradas.find(a => 
+            a.tipo === tipo && a.actividad === actividad
+        );
+
+        if (yaRegistrada) {
+            mostrarToast("Esta actividad ya está registrada", "error");
+            return;
+        }
+
+        const nuevaActividad = {
+            id: Date.now(),
+            tipo: tipo,
+            actividad: actividad,
+            fecha: new Date().toISOString().replace('T', ' ').substring(0, 19),
+            periodo: "Ene-Abr-26"
+        };
+
+        actividadesRegistradas.push(nuevaActividad);
+        renderizarActividades();
+        mostrarToast("¡Actividad agregada correctamente!", "success");
+
+        // Resetear formulario
+        tipoSelect.value = "";
+        actividadSelect.value = "";
+        actividadSelect.disabled = true;
+        actividadSelect.innerHTML = '<option value="">Primero selecciona un tipo</option>';
+        btnAgregar.disabled = true;
+
+        // Habilitar botón de carnet si hay actividades
+        btnDescargarCarnet.disabled = false;
+    }
+
+    function renderizarActividades() {
+        if (actividadesRegistradas.length === 0) {
+            actividadesContainer.innerHTML = `
+                <div class="text-center text-base-content/50 py-12">
+                    <svg class="w-16 h-16 mx-auto mb-3 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
+                    </svg>
+                    <p>No hay actividades registradas</p>
+                </div>
+            `;
+            btnDescargarCarnet.disabled = true;
+            return;
+        }
+
+        actividadesContainer.innerHTML = actividadesRegistradas.map(act => `
+            <div class="card bg-base-200 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
+                <div class="card-body p-4">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1 space-y-2">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                <h4 class="font-bold text-lg">${act.actividad}</h4>
+                            </div>
+                            <div class="flex flex-wrap gap-2 text-sm">
+                                <div class="badge badge-outline">${act.tipo}</div>
+                                <div class="badge badge-ghost">
+                                    <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                                    </svg>
+                                    ${act.fecha}
+                                </div>
+                                <div class="badge badge-primary">
+                                    ${act.periodo}
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="confirmarEliminar(${act.id})" class="btn btn-error btn-sm btn-circle">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function confirmarEliminar(id) {
+        actividadAEliminar = id;
+        modalEliminar.showModal();
+    }
+
+    btnConfirmarEliminar.addEventListener("click", function() {
+        if (actividadAEliminar) {
+            actividadesRegistradas = actividadesRegistradas.filter(a => a.id !== actividadAEliminar);
+            renderizarActividades();
+            mostrarToast("Registro eliminado correctamente", "success");
+            actividadAEliminar = null;
+            modalEliminar.close();
+        }
+    });
+
+    function descargarCarnet() {
+        mostrarToast("Descargando carnet...", "info");
+        setTimeout(() => {
+            mostrarToast("¡Carnet descargado exitosamente!", "success");
+        }, 1500);
+    }
+
+    function mostrarToast(mensaje, tipo = "info") {
+        const iconos = {
+            success: '<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
+            error: '<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
+            info: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+        };
+
+        const clases = {
+            success: 'alert-success',
+            error: 'alert-error',
+            info: 'alert-info'
+        };
+
+        const toast = document.createElement('div');
+        toast.className = `alert ${clases[tipo]} shadow-lg mb-2`;
+        toast.innerHTML = `
+            <div class="flex items-center gap-2">
+                ${iconos[tipo]}
+                <span>${mensaje}</span>
+            </div>
+        `;
+
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transition = 'opacity 0.3s';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Agregar actividad de ejemplo (Basquetbol de las capturas)
+    window.addEventListener('load', function() {
+        actividadesRegistradas.push({
+            id: Date.now(),
+            tipo: "Actividades Deportivas",
+            actividad: "Basquetbol",
+            fecha: "2026-02-08 15:46:48",
+            periodo: "Ene-Abr-26"
+        });
+        renderizarActividades();
+        btnDescargarCarnet.disabled = false;
+    });
+</script>

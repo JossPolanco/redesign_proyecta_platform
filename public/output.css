@@ -36,6 +36,7 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --radius-lg: 0.5rem;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -243,6 +244,94 @@
         &.modal-open, &[open], &:target, .modal-toggle:checked + & {
           opacity: 0%;
         }
+      }
+    }
+  }
+  .drawer-side {
+    :where(&) {
+      @layer daisyui.l1.l2.l3 {
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+    }
+    @layer daisyui.l1.l2.l3 {
+      pointer-events: none;
+      visibility: hidden;
+      position: fixed;
+      inset-inline-start: calc(0.25rem * 0);
+      top: calc(0.25rem * 0);
+      z-index: 10;
+      grid-column-start: 1;
+      grid-row-start: 1;
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      grid-template-rows: repeat(1, minmax(0, 1fr));
+      align-items: flex-start;
+      justify-items: start;
+      overscroll-behavior: contain;
+      background-color: transparent;
+      opacity: 0%;
+      transition: opacity 0.2s ease-out 0.1s allow-discrete, visibility 0.3s ease-out 0.1s allow-discrete;
+      height: 100vh;
+      height: 100dvh;
+      > .drawer-overlay {
+        position: sticky;
+        top: calc(0.25rem * 0);
+        cursor: pointer;
+        place-self: stretch;
+        background-color: oklch(0% 0 0 / 40%);
+      }
+      > * {
+        grid-column-start: 1;
+        grid-row-start: 1;
+      }
+      > :not(.drawer-overlay) {
+        will-change: transform;
+        transition: translate 0.3s ease-out, width 0.2s ease-out;
+        translate: -100%;
+        [dir="rtl"] & {
+          translate: 100%;
+        }
+      }
+    }
+  }
+  .drawer-toggle {
+    @layer daisyui.l1.l2.l3 {
+      position: fixed;
+      height: calc(0.25rem * 0);
+      width: calc(0.25rem * 0);
+      appearance: none;
+      opacity: 0%;
+      :where(&:checked ~ .drawer-side) {
+        scrollbar-color: currentColor oklch(0 0 0 / calc(var(--page-has-backdrop, 0) * 0.4));
+        @supports (color: color-mix(in lab, red, red)) {
+          scrollbar-color: color-mix(in oklch, currentColor 35%, #0000) oklch(0 0 0 / calc(var(--page-has-backdrop, 0) * 0.4));
+        }
+      }
+      :where(:root:has(&:checked)) {
+        --page-has-backdrop: 1;
+        --page-overflow: hidden;
+        --page-scroll-bg: var(--page-scroll-bg-on);
+        --page-scroll-gutter: stable;
+        --page-scroll-transition: var(--page-scroll-transition-on);
+        animation: set-page-has-scroll forwards;
+        animation-timeline: scroll();
+      }
+    }
+    @layer daisyui.l1.l2 {
+      :where(&:checked ~ .drawer-side) {
+        pointer-events: auto;
+        visibility: visible;
+        overflow-y: auto;
+        opacity: 100%;
+        > :not(.drawer-overlay) {
+          translate: 0%;
+        }
+      }
+      &:focus-visible ~ .drawer-content label.drawer-button {
+        outline: 2px solid;
+        outline-offset: 2px;
       }
     }
   }
@@ -1470,48 +1559,6 @@
       transition: background-color 0.2s ease-out;
     }
   }
-  .menu-horizontal {
-    @layer daisyui.l1.l2 {
-      display: inline-flex;
-      flex-direction: row;
-      & > li:not(.menu-title) > details {
-        & > ul {
-          position: absolute;
-          margin-inline-start: calc(0.25rem * 0);
-          margin-top: calc(0.25rem * 4);
-          transform-origin: top;
-          border-radius: var(--radius-box);
-          background-color: var(--color-base-100);
-          padding-block: calc(0.25rem * 2);
-          padding-inline-end: calc(0.25rem * 2);
-          opacity: 0%;
-          scale: 95%;
-          box-shadow: 0 1px 3px 0 oklch(0% 0 0/0.1), 0 1px 2px -1px oklch(0% 0 0/0.1);
-          @media (prefers-reduced-motion: no-preference) {
-            @starting-style {
-              scale: 95%;
-              opacity: 0;
-            }
-            animation: menu 0.2s;
-            transition-property: opacity, scale, display;
-            transition-behavior: allow-discrete;
-            transition-duration: 0.2s;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          }
-        }
-        &[open] > ul {
-          opacity: 100%;
-          scale: 100%;
-        }
-      }
-      & > li > details > ul {
-        &:before {
-          --tw-content: none;
-          content: var(--tw-content);
-        }
-      }
-    }
-  }
   .avatar {
     @layer daisyui.l1.l2.l3 {
       position: relative;
@@ -1693,6 +1740,14 @@
       }
     }
   }
+  .drawer {
+    @layer daisyui.l1.l2.l3 {
+      position: relative;
+      display: grid;
+      width: 100%;
+      grid-auto-columns: max-content auto;
+    }
+  }
   .card {
     @layer daisyui.l1.l2.l3 {
       position: relative;
@@ -1865,16 +1920,6 @@
       }
     }
   }
-  .btn-active {
-    @layer daisyui.l1.l2 {
-      --btn-bg: var(--btn-color, var(--color-base-200));
-      @supports (color: color-mix(in lab, red, red)) {
-        --btn-bg: color-mix(in oklab, var(--btn-color, var(--color-base-200)), #000 7%);
-      }
-      --btn-shadow: 0 0 0 0 oklch(0% 0 0/0), 0 0 0 0 oklch(0% 0 0/0);
-      isolation: isolate;
-    }
-  }
   .modal-backdrop {
     @layer daisyui.l1.l2.l3 {
       grid-column-start: 1;
@@ -1888,6 +1933,9 @@
         cursor: pointer;
       }
     }
+  }
+  .z-40 {
+    z-index: 40;
   }
   .z-50 {
     z-index: 50;
@@ -1931,6 +1979,13 @@
       box-shadow: oklch(0% 0 0/ 0.25) 0px 25px 50px -12px;
       overflow-y: auto;
       overscroll-behavior: contain;
+    }
+  }
+  .drawer-content {
+    @layer daisyui.l1.l2.l3 {
+      grid-column-start: 2;
+      grid-row-start: 1;
+      min-width: calc(0.25rem * 0);
     }
   }
   .container {
@@ -2219,13 +2274,6 @@
       }
     }
   }
-  .navbar-center {
-    @layer daisyui.l1.l2.l3 {
-      display: inline-flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-  }
   .alert {
     border-width: var(--border);
     border-color: var(--alert-border-color, var(--color-base-200));
@@ -2391,14 +2439,17 @@
   .h-auto {
     height: auto;
   }
-  .max-h-\[250px\] {
-    max-height: 250px;
+  .max-h-62\.5 {
+    max-height: calc(var(--spacing) * 62.5);
+  }
+  .min-h-50 {
+    min-height: calc(var(--spacing) * 50);
   }
   .min-h-\[60px\] {
     min-height: 60px;
   }
-  .min-h-\[200px\] {
-    min-height: 200px;
+  .min-h-full {
+    min-height: 100%;
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -2433,6 +2484,9 @@
   .w-32 {
     width: calc(var(--spacing) * 32);
   }
+  .w-80 {
+    width: calc(var(--spacing) * 80);
+  }
   .w-full {
     width: 100%;
   }
@@ -2447,9 +2501,6 @@
   }
   .flex-1 {
     flex: 1;
-  }
-  .flex-none {
-    flex: none;
   }
   .shrink-0 {
     flex-shrink: 0;
@@ -2581,6 +2632,9 @@
       margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
+  .overflow-hidden {
+    overflow: hidden;
+  }
   .overflow-x-auto {
     overflow-x: auto;
   }
@@ -2605,10 +2659,6 @@
   .rounded-t-lg {
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
-  }
-  .rounded-t-none {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
   }
   .border {
     border-style: var(--tw-border-style);
@@ -2662,6 +2712,12 @@
   }
   .border-base-300 {
     border-color: var(--color-base-300);
+  }
+  .border-base-content\/10 {
+    border-color: var(--color-base-content);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+    }
   }
   .border-error {
     border-color: var(--color-error);
@@ -2892,8 +2948,8 @@
       }
     }
   }
-  .px-1 {
-    padding-inline: calc(var(--spacing) * 1);
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
@@ -2912,6 +2968,9 @@
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
+  }
+  .py-5 {
+    padding-block: calc(var(--spacing) * 5);
   }
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
@@ -3026,6 +3085,9 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
   .alert-error {
     @layer daisyui.l1.l2 {
@@ -3161,6 +3223,9 @@
       text-decoration-line: none;
     }
   }
+  .opacity-0 {
+    opacity: 0%;
+  }
   .opacity-30 {
     opacity: 30%;
   }
@@ -3225,10 +3290,28 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-shadow {
     transition-property: box-shadow;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
   }
   .btn-outline {
     @layer daisyui.l1 {
@@ -3377,6 +3460,13 @@
       --btn-fg: var(--color-warning-content);
     }
   }
+  .group-hover\/sidebar\:opacity-100 {
+    &:is(:where(.group\/sidebar):hover *) {
+      @media (hover: hover) {
+        opacity: 100%;
+      }
+    }
+  }
   .hover\:shadow-md {
     &:hover {
       @media (hover: hover) {
@@ -3414,14 +3504,82 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
+  .lg\:drawer-open {
+    @media (width >= 64rem) {
+      @layer daisyui.l1.l2.l3 {
+        > .drawer-toggle:checked {
+          ~ .drawer-side {
+            scrollbar-color: revert-layer;
+          }
+          :root:has(&) {
+            --page-overflow: revert-layer;
+            --page-scroll-gutter: revert-layer;
+            --page-scroll-bg: revert-layer;
+            --page-scroll-transition: revert-layer;
+            --page-has-backdrop: revert-layer;
+            animation: revert-layer;
+            animation-timeline: revert-layer;
+          }
+        }
+      }
+      @layer daisyui.l1.l2 {
+        > .drawer-side {
+          overflow-y: auto;
+        }
+        > .drawer-toggle {
+          display: none;
+          ~ .drawer-side {
+            pointer-events: auto;
+            visibility: visible;
+            position: sticky;
+            display: block;
+            width: auto;
+            overscroll-behavior: auto;
+            opacity: 100%;
+            > .drawer-overlay {
+              cursor: default;
+              background-color: transparent;
+            }
+          }
+          &:checked ~ .drawer-side {
+            pointer-events: auto;
+            visibility: visible;
+          }
+        }
+      }
+      @layer daisyui.l1 {
+        > .drawer-toggle ~ .drawer-side > :not(.drawer-overlay) {
+          translate: 0%;
+          [dir="rtl"] & {
+            translate: 0%;
+          }
+        }
+      }
+    }
+  }
   .lg\:col-span-2 {
     @media (width >= 64rem) {
       grid-column: span 2 / span 2;
     }
   }
-  .lg\:flex {
+  .lg\:block {
     @media (width >= 64rem) {
-      display: flex;
+      display: block;
+    }
+  }
+  .lg\:hidden {
+    @media (width >= 64rem) {
+      display: none;
+    }
+  }
+  .lg\:inline {
+    @media (width >= 64rem) {
+      display: inline;
+    }
+  }
+  .lg\:w-20 {
+    @media (width >= 64rem) {
+      width: calc(var(--spacing) * 20);
     }
   }
   .lg\:grid-cols-2 {
@@ -3437,6 +3595,15 @@
   .lg\:grid-cols-4 {
     @media (width >= 64rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .lg\:hover\:w-80 {
+    @media (width >= 64rem) {
+      &:hover {
+        @media (hover: hover) {
+          width: calc(var(--spacing) * 80);
+        }
+      }
     }
   }
 }
@@ -3807,6 +3974,14 @@
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -3836,6 +4011,8 @@
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-duration: initial;
+      --tw-ease: initial;
     }
   }
 }

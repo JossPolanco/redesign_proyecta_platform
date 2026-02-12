@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expediente Estudiantil - PROYECTA</title>
-    <link rel="stylesheet" href="/public/output.css">
+    <link rel="stylesheet" href="/public/output.css?v=1770931427279">
     <script>document.documentElement.classList.add('sidebar-init');</script>
     <style>
         .sidebar-init .group\/sidebar,
@@ -22,7 +22,7 @@
         <!-- Main Content -->
         <div class="drawer-content">
             <!-- Navbar -->
-            <header class="navbar bg-neutral text-neutral-content shadow-lg sticky top-0 z-40">
+            <header class="navbar bg-neutral text-neutral-content shadow-lg border-b-2 border-emerald-600/40 sticky top-0 z-40">
                 <div class="navbar-start">
                     <label for="drawer-toggle" class="btn btn-ghost btn-circle lg:hidden">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -406,14 +406,14 @@
             <label for="drawer-toggle" aria-label="close sidebar" class="drawer-overlay"></label>
             <aside
                 class="group/sidebar bg-base-300 min-h-full lg:w-16 lg:hover:w-56 w-56 transition-all duration-300 ease-in-out overflow-hidden flex flex-col">
-                <div class="flex items-center gap-3 px-4 py-5 border-b border-base-content/10">
-                    <svg class="w-10 h-10 shrink-0 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                <div class="flex items-center gap-3 px-4 h-16 border-b border-emerald-600/30 bg-emerald-900/20">
+                    <svg class="w-10 h-10 shrink-0 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                         <path
                             d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                     </svg>
                     <span
-                        class="text-xl font-bold whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:block hidden">PROYECTA</span>
-                    <span class="text-xl font-bold whitespace-nowrap lg:hidden">PROYECTA</span>
+                        class="text-xl font-bold whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:block hidden text-emerald-400">PROYECTA</span>
+                    <span class="text-xl font-bold whitespace-nowrap lg:hidden text-emerald-400">PROYECTA</span>
                 </div>
                 <ul class="menu gap-1 px-2 py-4 flex-1">
                     <li>
@@ -486,6 +486,78 @@
                             </svg>
                             <span class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Psicología</span>
                             <span class="whitespace-nowrap lg:hidden">Psicología</span>
+                        </a>
+                    </li>
+                    <!-- Citas -->
+                    <li>
+                        <a href="citas.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Citas</span>
+                            <span class="whitespace-nowrap lg:hidden">Citas</span>
+                        </a>
+                    </li>
+                    <!-- Préstamos -->
+                    <li>
+                        <a href="prestamos.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Préstamos</span>
+                            <span class="whitespace-nowrap lg:hidden">Préstamos</span>
+                        </a>
+                    </li>
+                    <!-- Tutoría -->
+                    <li>
+                        <a href="sesionesTutoria.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Tutoría</span>
+                            <span class="whitespace-nowrap lg:hidden">Tutoría</span>
+                        </a>
+                    </li>
+                    <!-- Titulación -->
+                    <li>
+                        <a href="titulacion.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.26 10.147a60.438 60.438 0 00-.491 6.347A48.62 48.62 0 0112 20.904a48.62 48.62 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.636 50.636 0 00-2.658-.813A59.906 59.906 0 0112 3.493a59.903 59.903 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Titulación</span>
+                            <span class="whitespace-nowrap lg:hidden">Titulación</span>
+                        </a>
+                    </li>
+                    <!-- Adeudo -->
+                    <li>
+                        <a href="adeudo.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Adeudo</span>
+                            <span class="whitespace-nowrap lg:hidden">Adeudo</span>
+                        </a>
+                    </li>
+                    <!-- Referencias Bancarias -->
+                    <li>
+                        <a href="referenciasBancarias.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Ref. Bancarias</span>
+                            <span class="whitespace-nowrap lg:hidden">Ref. Bancarias</span>
                         </a>
                     </li>
                 </ul>

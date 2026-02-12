@@ -36,15 +36,20 @@
       </label>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-6 max-w-5xl space-y-6">
-      <!-- Welcome -->
-      <div class="flex items-center justify-between">
-        <div>
-          <h1 class="text-2xl font-bold">Bienvenido, <span class="text-primary">David Portillo</span></h1>
-          <p class="text-sm text-base-content/60">Universidad Tecnológica de Chihuahua &middot; Cuatrimestre Enero - Abril 2026</p>
-        </div>
-      </div>
+        <!-- Main Content -->
+        <div class="drawer-content">
+            <!-- Navbar -->
+            <header class="navbar bg-neutral text-neutral-content shadow-lg sticky top-0 z-40">
+                <div class="navbar-start">
+                    <!-- Hamburger for mobile -->
+                    <label for="drawer-toggle" class="btn btn-ghost btn-circle lg:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </label>
+                    
+                </div>
 
       <!-- Grid principal: 3 columnas -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -127,20 +132,109 @@
           </div>
         </a>
 
-        <!-- Col 3: Recursos (botones compactos) -->
-        <div class="card bg-base-100 shadow-md h-fit">
-          <div class="card-body p-4 gap-2">
-            <h3 class="font-semibold text-sm flex items-center gap-2 mb-1">
-              <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                ></path>
-              </svg>
-              Recursos
-            </h3>
+                <!-- Navigation Menu -->
+                <ul class="menu gap-1 px-2 py-4 flex-1">
+                    <!-- Inicio -->
+                    <li>
+                        <a href="index.html" class="flex items-center gap-3 active">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Inicio</span>
+                            <span class="whitespace-nowrap lg:hidden">Inicio</span>
+                        </a>
+                    </li>
+                    <!-- Expediente -->
+                    <li>
+                        <a href="expediente.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Información</span>
+                            <span class="whitespace-nowrap lg:hidden">Información</span>
+                        </a>
+                    </li>
+                    <!-- Horario -->
+                    <li>
+                        <a href="horario.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Horario</span>
+                            <span class="whitespace-nowrap lg:hidden">Horario</span>
+                        </a>
+                    </li>
+                    <!-- Estado de Cuenta -->
+                    <li>
+                        <a href="estadoCuenta.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Estado
+                                de Cuenta</span>
+                            <span class="whitespace-nowrap lg:hidden">Estado de Cuenta</span>
+                        </a>
+                    </li>
+                    <!-- Actividades -->
+                    <li>
+                        <a href="actividades.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Actividades</span>
+                            <span class="whitespace-nowrap lg:hidden">Actividades</span>
+                        </a>
+                    </li>
+                    <!-- Estadía -->
+                    <li>
+                        <a href="estadia.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Estadía</span>
+                            <span class="whitespace-nowrap lg:hidden">Estadía</span>
+                        </a>
+                    </li>
+                    <!-- Becas -->
+                    <li>
+                        <a href="becas.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Becas</span>
+                            <span class="whitespace-nowrap lg:hidden">Becas</span>
+                        </a>
+                    </li>
+                    <!-- Psicología -->
+                    <li>
+                        <a href="psicologia.html" class="flex items-center gap-3">
+                            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            <span
+                                class="whitespace-nowrap opacity-0 group-hover/sidebar:opacity-100 transition-opacity duration-300 lg:inline hidden">Psicología</span>
+                            <span class="whitespace-nowrap lg:hidden">Psicología</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+    </div>
 
             <a href="#" class="btn btn-sm btn-outline btn-success justify-start gap-2 normal-case font-normal w-full">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
